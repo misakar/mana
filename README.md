@@ -22,10 +22,8 @@ mana = my:toolkit + generate <br/>
     $ mana init project_name
 
 你已经创建了你的目录结构(如图)<br/>
-![目录结构]() <br/>
+![目录结构](http://7xj431.com1.z0.glb.clouddn.com/屏幕快照%202015-09-11%20下午3.37.55.png) <br/>
 并且在相关文件中预填了代码<br/>
-[config.py预填代码]() <br/>
-[__init__.py预填代码]() <br/>
 
 ### install your flask extensions
 在 requirement.txt 中写入你希望安装的扩展的名称
