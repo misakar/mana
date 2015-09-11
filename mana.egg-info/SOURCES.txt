@@ -1,0 +1,7 @@
+mana.egg-info/PKG-INFO
+mana.egg-info/SOURCES.txt
+mana.egg-info/dependency_links.txt
+mana.egg-info/entry_points.txt
+mana.egg-info/not-zip-safe
+mana.egg-info/requires.txt
+mana.egg-info/top_level.txt

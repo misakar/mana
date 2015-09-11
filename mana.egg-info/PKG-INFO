@@ -1,0 +1,22 @@
+Metadata-Version: 1.1
+Name: mana
+Version: 0.99
+Summary: my flask toolkit
+Home-page: https://github.com/neo1218/mana
+Author: neo1218
+Author-email: neo1218@yeah.net
+License: MIT
+Description: 
+        mana
+        -------------
+        
+        my flask toolkit command
+        
+Platform: any
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: *Unix
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
