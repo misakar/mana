@@ -15,8 +15,8 @@
 
 import click
 import os
-from templates import config_base
-from templates import file_init
+from templates import _config_base, _config_with_sql, _file_init, \
+                     _file_init_with_sql, _sql_models_file
 
 
 def make_tuple(name, count):
@@ -30,7 +30,7 @@ def make_tuple(name, count):
 def fill_file(project_name, filename, pre_code):
     """文件中填入预填代码"""
     path = os.popen('pwd').readlines()[0][0:-1]
-    fo = open("%s/%s/%s" % (path, project_name, filename), "w")
+    fo = open("%s/%s/%s" % (path, project_name, filename), "w+")
     fo.write(pre_code)
     fo.close
 
@@ -60,14 +60,14 @@ def init(project_name):
     os.system("cd ..")
 
     # happy coding
-    fill_file(project_name,'config.py', config_base)
-    fill_file(project_name,'app/__init__.py', file_init)
+    fill_file(project_name,'config.py', _config_base)
+    fill_file(project_name,'app/__init__.py', _file_init)
 
     click.echo("init ... done!")
 
 
 @mana.command()
-@click.option('--venv/--no-venv', default=False)
+@click.option('--venv/--no-venv', default=False, help="")
 def install(venv):
     """install your flask extensions"""
     if venv:
@@ -85,6 +85,10 @@ def install(venv):
 
 
 @mana.command()
-@click.argument('ext')
-def ext(ext):
-    """integrate flask-ext"""
+@click.argument('project_name')
+def sql(project_name):
+    """integrate flask-sqlalchemy"""
+    fill_file(project_name, 'config.py', _config_with_sql)
+    fill_file(project_name, 'app/__init__.py', _file_init_with_sql)
+    fill_file(project_name, 'app/models.py', _sql_models_file)
+    click.echo("integrate flask-sqlalchemy ... done!")

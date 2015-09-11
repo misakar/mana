@@ -41,11 +41,15 @@ mana = my:toolkit + generate <br/>
 ### work with sql
 对于sql数据库的处理, flask-sqlalchemy 是我最常用的扩展，使用mana可以帮助我快速集成、初始化扩展
 
-    mana ext flask-sqlalchemy
+    mana sql project_name
 
 接下来，你只需要专心于models.py的数据库设计与编码了<br/>
 
 
+### create manage.py
+还可以使用mana创建manage.py集成flask-script和flask-migrate管理我们的项目和进行数据库迁移与更新
+
+
 ## 进度
 2015-0910: have an idea<br/>
-2015-0911: mana init & mana install<br/>
+2015-0911: mana init & mana install & mana sql<br/>
