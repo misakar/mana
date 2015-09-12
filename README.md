@@ -1,5 +1,7 @@
-mana: my flask toolkit : help me generate my flask app.
+mana ()
 ===
+### : my flask toolkit : help me generate my flask app.
+
 ## flask in my heart
 我觉得，flask是一个非常自由的框架，它只有默默服务的核心，没有条条框框的约束。<br/>
 
@@ -62,7 +64,7 @@ mana 目前只支持mac和Linux系统。<br/>
 ### create manage.py
 还可以使用mana创建manage.py集成flask-script和flask-migrate管理我们的项目和进行数据库迁移与更新
 
-    $ mana manage --app=app --db=db
+    $ mana manage project_name
 
 现在可以使用manage.py进行数据库迁移和更新了
 
@@ -98,6 +100,13 @@ mana 目前只支持mac和Linux系统。<br/>
     mana login project_name
 
 接下来你只需要专注于login视图的逻辑了。<br/>
+
+## my flask toolkit
+处理sql数据库: [flask-sqlalchemy](https://github.com/mitsuhiko/flask-sqlalchemy)<br/>
+处理登录: [flask-login](https://github.com/maxcountryman/flask-login)<br/>
+进行数据库迁移: [flask-migrate](https://github.com/miguelgrinberg/Flask-Migrate)<br/>
+进行项目管理: [flask-script](https://github.com/smurfix/flask-script)<br/>
+后台管理: [flask-admin](https://github.com/flask-admin/flask-admin)<br/>
 
 ## future
 1. 自动处理登录<br/>
