@@ -28,12 +28,12 @@ mana = my:toolkit + generate <br/>
 ### install your flask extensions
 在 requirement.txt 中写入你希望安装的扩展的名称
 
-    mana install --venv
+    $ mana install --venv
 
 这将创建一个名称为venv的虚拟环境并在该虚拟环境中安装扩展<br/>
 如果你希望在全局环境中安装扩展，你可以关闭 --venv 选项
 
-    mana install --no-venv
+    $ mana install --no-venv
 
 那么你的扩展就会被安装到全局中<br/>
 
@@ -41,7 +41,7 @@ mana = my:toolkit + generate <br/>
 ### work with sql
 对于sql数据库的处理, flask-sqlalchemy 是我最常用的扩展，使用mana可以帮助我快速集成、初始化扩展
 
-    mana sql project_name
+    $ mana sql project_name
 
 接下来，你只需要专心于models.py的数据库设计与编码了<br/>
 
@@ -49,6 +49,42 @@ mana = my:toolkit + generate <br/>
 ### create manage.py
 还可以使用mana创建manage.py集成flask-script和flask-migrate管理我们的项目和进行数据库迁移与更新
 
+    $ mana manage --app=app --db=db
+
+现在可以使用manage.py进行数据库迁移和更新了
+
+    $ python manage.py db init
+    $ python manage.py db migrate -m "v1.0"
+    $ python manage.py db upgrade
+
+使用manage.py启动数据库
+
+    $ python manage.py runserver
+
+使用shell环境
+
+    $ python manage.py shell
+
+如果你希望在shell中自动导入模块(ex: 导入User)的话:
+
+    from app.models import User
+
+    def make_shell_context():
+    """自动加载环境"""
+    return dict(
+        app=app,
+        db=db,
+        User=User
+    )
+
+这样就可以了<br/>
+
+## generate login
+处理登录是比较麻烦的事情, 使用mana集成flask-login可以帮助我们快速处理登录
+
+    mana login project_name
+
+登录搞定<br/>
 
 ## 进度
 2015-0910: have an idea<br/>

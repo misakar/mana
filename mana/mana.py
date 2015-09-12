@@ -16,7 +16,7 @@
 import click
 import os
 from templates import _config_base, _config_with_sql, _file_init, \
-                     _file_init_with_sql, _sql_models_file
+                     _file_init_with_sql, _sql_models_file, _manage_py
 
 
 def make_tuple(name, count):
@@ -92,3 +92,12 @@ def sql(project_name):
     fill_file(project_name, 'app/__init__.py', _file_init_with_sql)
     fill_file(project_name, 'app/models.py', _sql_models_file)
     click.echo("integrate flask-sqlalchemy ... done!")
+
+
+@mana.command()
+@click.argument('project_name')
+def manage(project_name):
+    """create manage.py help me:)"""
+    fill_file(project_name, 'manage.py', _manage_py)
+    click.echo("create ... done!")
+
