@@ -101,3 +101,9 @@ def manage(project_name):
     fill_file(project_name, 'manage.py', _manage_py)
     click.echo("create ... done!")
 
+
+@mana.command()
+@click.argument('project_name')
+def login(project_name):
+    """generate login"""
+

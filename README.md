@@ -16,13 +16,26 @@ flask 是自由的，但这种自由更多的体现在选择上(虽然这有时�
 ## So: mana
 mana = my:toolkit + generate <br/>
 
+## install mana
+
+    $ pip install mana
+
+mana 目前只支持mac和Linux系统。<br/>
+
 ## 使用mana 😄
 ### init your project
 
     $ mana init project_name
 
 你已经创建了你的目录结构(如图)<br/>
-![目录结构](http://7xj431.com1.z0.glb.clouddn.com/屏幕快照%202015-09-11%20下午3.37.55.png) <br/>
+
+                    |-app/              ---- __init__.py
+                    |-test/                  models.py
+    project_name -  |-config.py              views.py
+                    |-requirement.txt        forms.py
+                    |-README.md              templates
+                    |                        static
+
 并且在相关文件中预填了代码<br/>
 
 ### install your flask extensions
@@ -84,8 +97,19 @@ mana = my:toolkit + generate <br/>
 
     mana login project_name
 
-登录搞定<br/>
+接下来你只需要专注于login视图的逻辑了。<br/>
+
+## future
+1. 自动处理登录<br/>
+2. init 更加细化: 单文件，无蓝图组织，蓝图组织<br/>
+3. 自动添加测试单元<br/>
+
 
 ## 进度
 2015-0910: have an idea<br/>
 2015-0911: mana init & mana install & mana sql<br/>
+2015-0912: mana manage <br/>
+
+
+## powered by click
+[click](https://github.com/mitsuhiko/click) 😄  <br/>

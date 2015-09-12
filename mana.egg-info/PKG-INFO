@@ -10,7 +10,7 @@ Description:
         mana
         -------------
         
-        my flask toolkit command
+        my flask toolkit,  help me generate my flask app.
         
 Platform: any
 Classifier: Environment :: Web Environment
