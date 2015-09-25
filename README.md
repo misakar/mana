@@ -1,22 +1,27 @@
-mana ()
+---------mana-----------
 ===
 ### : my flask toolkit : help me generate my flask app.
 
 ## flask in my heart
-我觉得，flask是一个非常自由的框架，它只有默默服务的核心，没有条条框框的约束。<br/>
 
-## flask & free
-flask 是自由的，但这种自由更多的体现在选择上(虽然这有时会有点困难)。<br/>
-但是如果我们选中了一个合适的扩展后，一般就会在自己的项目中一直使用它。<br/>
+    flask是一个非常自由的框架，这种自由体现在选择上，可以说没有任何限制，你可以选择你想要的数据库
+    你想用的扩展。如果没有，你可以自己写一个.
+
+## But Choose is Difficult
+
+    I think;
 
 ## toolkit
-每个flask开发者都有自己的一套工具 <br/>
+
+    每个flask开发者都有自己熟练的一套工具
 
 ## generate
-不用每次重复的创建文件目录，集成、初始化扩展。<br/>
+
+    不用每次重复的创建文件目录，集成、初始化扩展。
 
 ## So: mana
-mana = my:toolkit + generate <br/>
+
+    mana = my:toolkit + generate
 
 ## install mana
 
@@ -94,12 +99,6 @@ mana 目前只支持mac和Linux系统。<br/>
 
 这样就可以了<br/>
 
-## generate login
-处理登录是比较麻烦的事情, 使用mana集成flask-login可以帮助我们快速处理登录
-
-    mana login project_name
-
-接下来你只需要专注于login视图的逻辑了。<br/>
 
 ## my flask toolkit
 处理sql数据库: [flask-sqlalchemy](https://github.com/mitsuhiko/flask-sqlalchemy)<br/>
@@ -118,7 +117,12 @@ mana 目前只支持mac和Linux系统。<br/>
 2015-0910: have an idea<br/>
 2015-0911: mana init & mana install & mana sql<br/>
 2015-0912: mana manage <br/>
+2015-0920: clean this repo..<br/>
 
 
 ## powered by click
-[click](https://github.com/mitsuhiko/click) 😄  <br/>
+[click源码](https://github.com/mitsuhiko/click) 😄  <br/>
+
+    click 是flask作者的一个开源项目
+
+[click文档](http://click.pocoo.org/5/)👌 <br/>

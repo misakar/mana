@@ -6,6 +6,9 @@
 
         my flask toolkit & a command powered by click !
 
+        copyright: (c) 2015 by Armin Ronacher.
+        :license: BSD, see LICENSE for more details.
+
         mana init project_name                 # init your project
         mana install --venv/--no-venv          # install your flask extensions
         mana sql database_name                 # makesure the database_name is same with your config
@@ -100,10 +103,3 @@ def manage(project_name):
     """create manage.py help me:)"""
     fill_file(project_name, 'manage.py', _manage_py)
     click.echo("create ... done!")
-
-
-@mana.command()
-@click.argument('project_name')
-def login(project_name):
-    """generate login"""
-
