@@ -25,7 +25,7 @@
 
 ## install mana
 
-    $ pip install mana
+    $ pip install mana0
 
 mana 目前只支持mac和Linux系统。<br/>
 

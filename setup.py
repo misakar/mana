@@ -6,19 +6,19 @@ mana
 
 my flask toolkit,  help me generate my flask app.
 """
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 setup(
-    name='mana',
-    version='0.99',
+    name='mana0',
+    version='0.10',
+    packages=find_packages(),
     url='https://github.com/neo1218/mana',
     license='MIT',
     author='neo1218',
     author_email='neo1218@yeah.net',
     description='my flask toolkit',
     long_description=__doc__,
-    py_modules=['mana'],
     # if you would be using a package instead use packages instead
     # of py_modules:
     # packages=['flask_sqlite3'],
@@ -30,7 +30,7 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        mana=mana.mana:mana
+        mana0=mana0.mana.mana:mana
     ''',
     classifiers=[
         'Environment :: Web Environment',
