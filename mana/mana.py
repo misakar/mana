@@ -6,8 +6,8 @@
 
         my flask toolkit & a command powered by click !
 
-        copyright: (c) 2015 by Armin Ronacher.
-        :license: BSD, see LICENSE for more details.
+        copyright: (c) 2015 by neo1218.
+        :license: MIT, see LICENSE for more details.
 
         mana init project_name                 # init your project
         mana install --venv/--no-venv          # install your flask extensions
