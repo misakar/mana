@@ -125,7 +125,7 @@ mana 目前只支持mac和Linux系统。<br/>
 	----------------------------------------------------
 	2015-1024: hackathon hack
 	----------------------------------------------------
-	2015-1024: mana init update
+	2015-1024: mana init update, review my old code :(
 
 ## powered by click
 [click源码](https://github.com/mitsuhiko/click) 😄  <br/>
