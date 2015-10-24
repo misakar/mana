@@ -114,11 +114,18 @@ mana 目前只支持mac和Linux系统。<br/>
 
 
 ## 进度
-2015-0910: have an idea<br/>
-2015-0911: mana init & mana install & mana sql<br/>
-2015-0912: mana manage <br/>
-2015-0920: clean this repo..<br/>
 
+	2015-0910: have an idea
+	----------------------------------------------------
+	2015-0911: mana init & mana install & mana sql
+	----------------------------------------------------
+	2015-0912: mana manage
+	----------------------------------------------------
+	2015-0920: clean this repo..
+	----------------------------------------------------
+	2015-1024: hackathon hack
+	----------------------------------------------------
+	2015-1024: mana init update
 
 ## powered by click
 [click源码](https://github.com/mitsuhiko/click) 😄  <br/>
