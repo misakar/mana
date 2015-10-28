@@ -107,7 +107,7 @@ ex:
 
 这样就可以通过 /bluep/... 去访问蓝图对应的视图
 
-### 6. mana what? --> use your image ..
+### 6. mana what? --> use your imagination ..
 
     未完 .... 待续 ....
 
