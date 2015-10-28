@@ -2,11 +2,11 @@ mana
 ===
 ### fast generate flask project
 
-## 为什么要使用mana ?
-### 1. I Don't Want Waste Time on --mkdir--
-### 2. I Don't Want [virtualenv venv] [. venv/bin/activate] and [ pip pip pip...]
-### 3. I Don't Want [from flask.ext.xxx import Xxx] [xxx = Xxx(app)]
-### 4. I Don't Want [blue = Blueprint('blue'..)] [app.regist_blueprint('blue', url_prefix="/blue")]
+### 为什么要使用mana ?
+#### 1. I Don't Want Waste Time on --mkdir--
+#### 2. I Don't Want [virtualenv venv] [. venv/bin/activate] and [ pip pip pip...]
+#### 3. I Don't Want [from flask.ext.xxx import Xxx] [xxx = Xxx(app)]
+#### 4. I Don't Want [blue = Blueprint('blue'..)] [app.regist_blueprint('blue', url_prefix="/blue")]
 
             ..................So..........Use.........mana...................
 
@@ -26,8 +26,8 @@ mana
                     |                        static
 
 并且在相关文件中预填了代码<br/>
-[config.py预填代码]() : 三个配置类, 对应生产、测试、开发环境配置 <br/>
-[app/__init__.py预填代码]() : 创建了flask app, 导入了基本配置
+[config.py预填代码](https://github.com/neo1218/mana/blob/master/examples/GoodIdea/config.py) : 三个配置类, 对应生产、测试、开发环境配置 <br/>
+[app/__init__.py预填代码](https://github.com/neo1218/mana/blob/master/examples/GoodIdea/app/__init__.py) : 创建了flask app, 导入了基本配置
 
 ### 2. mana install (--venv) --> 安装flask扩展
 在 requirement.txt 中写入你希望安装的扩展的名称 <br/>
