@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        mana0=mana0.mana.mana:mana
+    

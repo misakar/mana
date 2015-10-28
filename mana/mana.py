@@ -9,17 +9,28 @@
         copyright: (c) 2015 by neo1218.
         :license: MIT, see LICENSE for more details.
 
+        :version 1.0
         mana init project_name                 # init your project
         mana install --venv/--no-venv          # install your flask extensions
         mana sql database_name                 # makesure the database_name is same with your config
-        mana project_name app db               # create manage.py
+        mana manage project                    # create manage.py to manage the project
         mana update project_name               # update the project
+
+        :version 2.0
+        mana blue book                         # create a blueprint book, automatic regiest blueprint
+            --prefix                           # url_prefix of blueprint
+        mana osc project_name                  # create a opensource project
+
 """
 
 import click
 import os
-from templates import _config_base, _config_with_sql, _file_init, \
-                     _file_init_with_sql, _sql_models_file, _manage_py
+# import code templates
+from templates._base import _init_py, _init_sql_py
+from templates._config import _config_sql_py, _config_py
+from templates._sql import _sql_py
+from templates._management import _management_py
+# from templates._blueprint import _blueprint_py
 
 
 def make_tuple(name, count):
@@ -34,7 +45,7 @@ def make_tuple(name, count):
     return tuple(format_tuple)
 
 
-def fill_file(project_name, filename, pre_code):
+def fill_file(floder, filename, pre_code):
     """
 	文件中填入预填代码:
 	预填代码从templates模版中获取
@@ -46,11 +57,13 @@ def fill_file(project_name, filename, pre_code):
 	# open the file path::project_name::filename and is "w+"
 	# write the pre_code into file
     path = os.popen('pwd').readlines()[0][0:-1]
-    fo = open("%s/%s/%s" % (path, project_name, filename), "w+")
+    fo = open("%s/%s/%s" % (path, floder, filename), "w+")
     fo.write(pre_code)
     fo.close
 
+
 """use click:)"""
+""":version 1.0"""
 
 @click.group()
 def mana():
@@ -59,7 +72,7 @@ def mana():
     pass
 
 
-@mana.command()
+@click.command()
 @click.argument('project_name', default="my_project")
 def init(project_name):
     """
@@ -82,14 +95,15 @@ def init(project_name):
     # happy coding
 	# 调用 fill_file 函数
 	# 初始化的时候调用模版预填代码
-    fill_file(project_name, 'config.py', _config_base)
-    fill_file(project_name, 'app/__init__.py', _file_init)
+    fill_file(project_name, 'config.py', _config_py)
+    fill_file(project_name, 'app/__init__.py', _init_py)
 
     click.echo("init ... done!")
 
 
-@mana.command()
-@click.option('--venv/--no-venv', default=False, help="")
+@click.command()
+@click.option('--venv', default=True, help="install your flask extensions into virtualenv")
+@click.option('--venv', default=False, help="install your flask extensions into global environment")
 def install(venv):
     """
 	install your flask extensions
@@ -116,7 +130,7 @@ def install(venv):
         click.echo("install ... done!")
 
 
-@mana.command()
+@click.command()
 @click.argument('project_name')
 def sql(project_name):
     """
@@ -124,13 +138,13 @@ def sql(project_name):
 	自动集成flask-sqlalchemy扩展
 	:param project_name 项目的名称
 	"""
-    fill_file(project_name, 'config.py', _config_with_sql)
-    fill_file(project_name, 'app/__init__.py', _file_init_with_sql)
-    fill_file(project_name, 'app/models.py', _sql_models_file)
+    fill_file(project_name, 'config.py', _config_sql_py)
+    fill_file(project_name, 'app/__init__.py', _init_sql_py)
+    fill_file(project_name, 'app/models.py', _sql_py)
     click.echo("integrate flask-sqlalchemy ... done!")
 
 
-@mana.command()
+@click.command()
 @click.argument('project_name')
 def manage(project_name):
     """
@@ -138,5 +152,39 @@ def manage(project_name):
 	创建 manage.py 文件
 	调用 fill_file 函数
 	"""
-    fill_file(project_name, 'manage.py', _manage_py)
+    fill_file(project_name, 'manage.py', _management_py)
     click.echo("create ... done!")
+
+
+""":version 2.0"""
+@click.command()
+@click.argument('blueprint_name')
+@click.options('--prefix', default="/", help="the url_prefix of blueprint")
+@click.options('--subdomain', default="book", help="the subdomain of blueprint")
+def blue(blueprint_name):
+    """
+    create blueprint
+    创建蓝图
+    :ex mana blue book
+        book = Blueprint('book', __name__, template_folder='templates', static_folder='static')
+        app.register_blueprint(book)
+    :ex mana blue book --prefix="/book"
+        app.register_blueprint(book, url_prefix="/book")
+    :ex mana blue book --subdomain="book"
+        app.register_blueprint(book, subdomain='book')
+    """
+    click.echo("create flask Blueprint obj %s" % blueprint_name)
+    os.system()
+    os.system("mkdir %s" % blueprint_name)
+    os.system("cd %s && touch __init__.py views.py forms.py" % blueprint_name)
+    # fill_file(blueprint_name, '__init__.py', _blueprint_py % blueprint_name)
+    # fill_file(blueprint_name, 'views.py', )
+    # fill_file(blueprint_name, 'forms.py', )
+
+
+# add mana command set
+mana.add_command(init)
+mana.add_command(install)
+mana.add_command(sql)
+mana.add_command(manage)
+mana.add_command(blue)

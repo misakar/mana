@@ -1,15 +1,14 @@
-#!/usr/bin/env python
-# encoding: utf-8
+# coding: utf-8
 
 """
-    templates.py
-    ~~~~~~~~~~~~
+    _config.py
+    ~~~~~~~~~~
 
-        代码预填模版文件
+        配置文件预填代码
 """
 
 
-_config_with_sql ='''# coding: utf-8
+_config_sql_py ='''# coding: utf-8
 """
     config.py
     ~~~~~~~~~
@@ -68,29 +67,7 @@ config = {
 '''
 
 
-_file_init ='''# coding: utf-8
-"""
-
-    ~~~~~~~
-
-
-"""
-
-from flask import Flask
-from config import config
-
-
-app = Flask(__name__)
-
-
-app.config.from_object(config[config_name])
-
-
-from . import views, models, forms
-'''
-
-
-_config_base ='''# coding: utf-8
+_config_py ='''# coding: utf-8
 """
     config.py
     ~~~~~~~~~
@@ -137,92 +114,4 @@ config = {
 
     'default': DevelopmentConfig
 }
-'''
-
-
-_file_init_with_sql = '''# coding: utf-8
-"""
-
-    ~~~~~~~
-
-
-"""
-
-from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
-from config import config
-
-
-app = Flask(__name__)
-
-
-app.config.from_object(config[config_name])
-
-
-db = SQLAlchemy(app)
-
-from . import views, models, forms
-'''
-
-
-_sql_models_file = '''# coding: utf-8
-"""
-    models.py
-    ~~~~~~~~~
-
-        数据库文件
-"""
-from . import db
-
-'''
-
-
-_manage_py='''# coding: utf-8
-
-import sys
-from flask.ext.script import Manager, Shell
-from flask.ext.migrate import Migrate, MigrateCommand
-from flask.ext.admin import Admin
-from flask.ext.admin.contrib.sqla import ModelView
-from app import app
-from db import db
-
-
-# 编码设置
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
-
-manager = Manager(app)
-migrate = Migrate(app, db)
-admin = Admin(app, name=project_name)
-
-
-def make_shell_context():
-    """自动加载环境"""
-    return dict(
-        app = app,
-        db = db
-    )
-
-
-manager.add_command("shell", Shell(make_context=make_shell_context))
-manager.add_command('db', MigrateCommand)
-
-
-# 后台数据库管理界面
-admin.add_view(ModelView([models], db.session))
-
-
-@manager.command
-def test():
-    """运行测试"""
-    import unittest
-    tests = unittest.TestLoader().discover('test')
-    unittest.TextTestRunner(verbosity=2).run(tests)
-
-
-if __name__ == '__main__':
-    app.debug = True
-    manager.run()
 '''
