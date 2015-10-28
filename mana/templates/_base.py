@@ -29,6 +29,7 @@ app.config.from_object(config[config_name])
 from . import views, models, forms
 '''
 
+
 _init_sql_py = '''# coding: utf-8
 """
 
@@ -48,6 +49,9 @@ app.config.from_object(config[config_name])
 
 
 db = SQLAlchemy(app)
+
+# blueprint register
+%s
 
 from . import views, models, forms
 '''

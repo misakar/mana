@@ -30,7 +30,13 @@ from templates._base import _init_py, _init_sql_py
 from templates._config import _config_sql_py, _config_py
 from templates._sql import _sql_py
 from templates._management import _management_py
-# from templates._blueprint import _blueprint_py
+from templates._blueprint import _blueprint_py
+
+
+###################################################
+project = "my_project"  # store project info      #
+# project name can help us find the basic pwd     #
+###################################################
 
 
 def make_tuple(name, count):
@@ -66,7 +72,7 @@ def fill_file(floder, filename, pre_code):
 """:version 1.0"""
 
 @click.group()
-def mana():
+def cli():
     """my flask toolkit
        help me generate my flask app"""
     pass
@@ -80,6 +86,10 @@ def init(project_name):
 	:param project_name 你项目的名字
 	:default 默认是 "my_project"
 	"""
+    # 将 project 声明为全局变量，用于存储项目基本信息
+    global project
+    project = project_name
+
 	# 在python中执行shell命令
     os.system("mkdir %s" % project_name)
     os.system("touch %s/README.md %s/config.py %s/requirement.txt" \
@@ -159,9 +169,8 @@ def manage(project_name):
 """:version 2.0"""
 @click.command()
 @click.argument('blueprint_name')
-@click.options('--prefix', default="/", help="the url_prefix of blueprint")
-@click.options('--subdomain', default="book", help="the subdomain of blueprint")
-def blue(blueprint_name):
+@click.options('--prefix', default=False, help="the url_prefix of blueprint")
+def blue(blueprint_name, prefix):
     """
     create blueprint
     创建蓝图
@@ -174,17 +183,32 @@ def blue(blueprint_name):
         app.register_blueprint(book, subdomain='book')
     """
     click.echo("create flask Blueprint obj %s" % blueprint_name)
-    os.system()
+    # create blueprint folder
     os.system("mkdir %s" % blueprint_name)
+    # create blueprint files
     os.system("cd %s && touch __init__.py views.py forms.py" % blueprint_name)
-    # fill_file(blueprint_name, '__init__.py', _blueprint_py % blueprint_name)
-    # fill_file(blueprint_name, 'views.py', )
-    # fill_file(blueprint_name, 'forms.py', )
+    # create Blueprint obj:: blueprint
+    fill_file(blueprint_name, '__init__.py', _blueprint_py % blueprint_name)
+    # register blueprint
+    # blue命令可以注册多个蓝图
+    # 为了更灵活的处理蓝图的注册,蓝图注册不预填代码模版
+    # 而是直接插入代码片段,进行注册
+    #   :ex: "app.register_blueprint('%s')" % blueprint_name + _init_py
+    if prefix:
+        blue_code = "app.register_blueprint('%s', url_prefix='%s')" % (blueprint_name, prefix)
+    else:
+        blue_code = "app.register_blueprint('%s')" % blueprint_name
+    # app:__init__.py 在使用蓝图后，更多的是用于分发请求
+    fill_file(project, 'app/__init__.py', _init_py + blue_code)
+    # ...done !
+    click.echo("create ... done!")
 
 
-# add mana command set
-mana.add_command(init)
-mana.add_command(install)
-mana.add_command(sql)
-mana.add_command(manage)
-mana.add_command(blue)
+###########################
+# mana command set
+cli.add_command(init)
+cli.add_command(install)
+cli.add_command(sql)
+cli.add_command(manage)
+cli.add_command(blue)
+###########################

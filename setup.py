@@ -1,23 +1,23 @@
 # encoding: utf-8
 
 """
-mana
--------------
+    mana
+    ~~~~
 
-my flask toolkit,  help me generate my flask app.
+    my flask toolkit,  help me generate my flask app.
 """
 from setuptools import setup, find_packages
 
 
 setup(
-    name='mana0',
-    version='0.11',
+    name='mana',
+    version='1.1',
     packages=find_packages(),
     url='https://github.com/neo1218/mana',
     license='MIT',
     author='neo1218',
     author_email='neo1218@yeah.net',
-    description='my flask toolkit',
+    description='help fast generate flask app',
     long_description=__doc__,
     # if you would be using a package instead use packages instead
     # of py_modules:
@@ -28,9 +28,10 @@ setup(
     install_requires=[
         'click'
     ],
+    # /mana/mana.py/click::mana
     entry_points='''
         [console_scripts]
-        mana0=mana0.mana.mana:mana
+        mana=mana.mana:cli
     ''',
     classifiers=[
         'Environment :: Web Environment',
