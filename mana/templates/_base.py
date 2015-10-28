@@ -23,7 +23,7 @@ from config import config
 app = Flask(__name__)
 
 
-app.config.from_object(config[config_name])
+app.config.from_object(config['default'])
 
 
 from . import views, models, forms
@@ -45,7 +45,7 @@ from config import config
 app = Flask(__name__)
 
 
-app.config.from_object(config[config_name])
+app.config.from_object(config['default'])
 
 
 db = SQLAlchemy(app)

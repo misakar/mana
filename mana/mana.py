@@ -113,7 +113,6 @@ def init(project_name):
 
 @click.command()
 @click.option('--venv', default=True, help="install your flask extensions into virtualenv")
-@click.option('--venv', default=False, help="install your flask extensions into global environment")
 def install(venv):
     """
 	install your flask extensions
@@ -162,7 +161,7 @@ def manage(project_name):
 	创建 manage.py 文件
 	调用 fill_file 函数
 	"""
-    fill_file(project_name, 'manage.py', _management_py)
+    fill_file(project_name, 'manage.py', _management_py % project_name)
     click.echo("create ... done!")
 
 
