@@ -16,4 +16,4 @@ app.config.from_object(config['default'])
 
 
 from . import views, models, forms
-app.register_blueprint('share', url_prefix='/share')
+app.register_blueprint('book', url_prefix='/book')

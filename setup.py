@@ -4,7 +4,7 @@
     mana
     ~~~~
 
-    my flask toolkit,  help me generate my flask app.
+    fast generate flask project
 """
 from setuptools import setup, find_packages
 

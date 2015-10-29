@@ -38,7 +38,7 @@ ex:
     click
     mana
 
-然后安装
+进入与requirement文件同级的目录然后运行安装命令
 
     $ mana install --venv
 
@@ -54,6 +54,7 @@ ex:
 ### 3. mana sql --> 集成 flask-sqlalchemy 处理关系型数据库
 对于sql数据库的处理, flask-sqlalchemy 是我最常用的扩展，使用mana可以快速集成flask-sqlalchemy并初始化扩展
 
+    进入与项目根目录同级的目录 🍺
     $ mana sql project_name
 
 接下来，你只需要专心于models.py的数据库类设计与编码了<br/>
@@ -62,6 +63,7 @@ ex:
 ### 4. mana manage --> 使用 manage.py 管理你的项目
 还可以使用mana创建manage.py集成flask-script和flask-migrate管理我们的项目
 
+    进入与项目根目录同级的目录 🍺
     $ mana manage project_name
 
 现在可以使用manage.py进行数据库迁移和更新了
@@ -99,16 +101,24 @@ ex:
 
 ### 5. mana blue (--prefix)--> 自动注册蓝图
 
-    $ mana blue bluep
+    进入与项目根目录同级的目录 🍺
+    $ mana blue project_name bluep
 
 这样你就创建了一个叫bluep的蓝图,并在app中注册 <br/>
 你也可以配置蓝图的url前缀
 
-    $ mana blue bluep --prefix="/bluep"
+    $ mana blue project_name bluep --prefix="/bluep"
 
 这样就可以通过 /bluep/... 去访问蓝图对应的视图
 
-### 6. mana what? --> use your imagination ..
+### 6. mana deploy --> deploy flask application on wsgi server
+
+    进入与项目根目录同级的目录 🍺
+    $ mana deploy project_name --host=121.43.230.104 --port=2333
+
+这样就可以创建wsgi.py去部署你的flask应用
+
+### 7. mana what? --> use your imagination ..
 
     未完 .... 待续 ....
 
@@ -151,6 +161,9 @@ ex:
     2015-1028: complete mana blue, but not test...
     ----------------------------------------------------
     2015-1028: rewrite README for more detail
+    ----------------------------------------------------
+    2015-1029: add mana deploy to deploy flask app on wsgi server
+
 
 
 ## powered by click

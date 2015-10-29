@@ -4,22 +4,24 @@
     mana
     ~~~~
 
-        my flask toolkit & help me generate my flask app!
+        fast generate flask project
 
         copyright: (c) 2015 by neo1218.
         :license: MIT, see LICENSE for more details.
 
         :version 1.0
         mana init project_name                 # init your project
-        mana install --venv/--no-venv          # install your flask extensions
-        mana sql database_name                 # makesure the database_name is same with your config
-        mana manage project                    # create manage.py to manage the project
-        mana update project_name               # update the project
+        mana install                           # install your flask extensions
+            --venv                             # with virtualenv
+        mana sql project_name                  # integrate with flask-sqlalchemy
+        mana manage project_name               # create manage.py to manage the project
 
         :version 2.0
         mana blue book                         # create a blueprint book, automatic regiest blueprint
             --prefix                           # url_prefix of blueprint
-        mana osc project_name                  # create a opensource project
+
+        :version 2.1
+        mana deploy wsgi                       # deploy your flask application on wsgi server
 
 """
 
@@ -31,6 +33,7 @@ from templates._config import _config_sql_py, _config_py
 from templates._sql import _sql_py
 from templates._management import _management_py
 from templates._blueprint import _blueprint_py
+from templates._deploy import _wsgi_py
 
 
 ###################################################
@@ -73,8 +76,7 @@ def fill_file(floder, filename, pre_code):
 
 @click.group()
 def cli():
-    """my flask toolkit
-       help me generate my flask app"""
+    """fast generate flask app 🍺" """
     pass
 
 
@@ -204,6 +206,18 @@ def blue(project_name, blueprint_name, prefix):
     click.echo("create ... done!")
 
 
+""":version 2.1"""
+@click.command()
+@click.argument('project_name')
+@click.option('--host')
+@click.option('--port', type=int)
+def deploy(project_name, host, port):
+    """deploy your flask application"""
+    click.echo("create wsgi file")
+    os.system("cd %s && touch wsgi.py" % project_name)
+    fill_file(project_name, 'wsgi.py', _wsgi_py % (host, port))
+
+
 ###########################
 # mana command set
 cli.add_command(init)
@@ -211,4 +225,5 @@ cli.add_command(install)
 cli.add_command(sql)
 cli.add_command(manage)
 cli.add_command(blue)
+cli.add_command(deploy)
 ###########################
