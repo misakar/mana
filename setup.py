@@ -4,7 +4,7 @@
     mana
     ~~~~
 
-    fast generate flask project
+    happy generate flask project
 """
 from setuptools import setup, find_packages
 
@@ -17,7 +17,7 @@ setup(
     license='MIT',
     author='neo1218',
     author_email='neo1218@yeah.net',
-    description='fast generate flask project',
+    description='happy generate flask project',
     long_description=__doc__,
     # if you would be using a package instead use packages instead
     # of py_modules:

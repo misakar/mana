@@ -4,7 +4,7 @@
     mana
     ~~~~
 
-        happy generate flask project
+        fast generate flask project
 
         copyright: (c) 2015 by neo1218.
         :license: MIT, see LICENSE for more details.
@@ -28,7 +28,7 @@
 import click
 import os
 # import code templates
-from templates._base import _init_head_py, _init_middle_py, _init_tail_py, _init_blue_py, _init_sql_py
+from templates._base import _init_py, _init_sql_py
 from templates._config import _config_sql_py, _config_py
 from templates._sql import _sql_py
 from templates._management import _management_py
@@ -39,6 +39,7 @@ from templates._deploy import _wsgi_py
 ###########################################################
 project = "my_project"  # store project info              #
 # project name can help us find the basic pwd             #
+mem_blueprint = _init_py  # memory the state of blueprint #
 ###########################################################
 
 
@@ -54,11 +55,10 @@ def make_tuple(name, count):
     return tuple(format_tuple)
 
 
-def fill_file_w(floder, filename, pre_code):
+def fill_file(floder, filename, pre_code):
     """
 	文件中填入预填代码:
 	预填代码从templates模版中获取
-    覆盖原文件,主要用于初始代码预填
 	:param project_name
 	:param filename
 	:param pre_code
@@ -72,31 +72,12 @@ def fill_file_w(floder, filename, pre_code):
     fo.close
 
 
-def fill_file_r(floder, filename, pre_code):
-    """
-	文件中填入预填代码:
-	预填代码从templates模版中获取
-    原文件后添加,主要用于后期代码预填
-	:param project_name
-	:param filename
-	:param pre_code
-	"""
-	# :path 当前路径
-	# open the file path::project_name::filename and is "w+"
-	# write the pre_code into file
-    path = os.popen('pwd').readlines()[0][0:-1]
-    fo = open("%s/%s/%s" % (path, floder, filename), "r+")
-    fo.read()
-    fo.write(pre_code)
-    fo.close
-
-
 """use click:)"""
 """:version 1.0"""
 
 @click.group()
 def cli():
-    """happy🍺 generate flask project"""
+    """fast generate flask app 🍺" """
     pass
 
 
@@ -127,8 +108,8 @@ def init(project_name):
     # happy coding
 	# 调用 fill_file 函数
 	# 初始化的时候调用模版预填代码
-    fill_file_w(project_name, 'config.py', _config_py)
-    fill_file_w(project_name, 'app/__init__.py', (_init_head_py + _init_middle_py + _init_blue_py))
+    fill_file(project_name, 'config.py', _config_py)
+    fill_file(project_name, 'app/__init__.py', _init_py)
 
     click.echo("init ... done!")
 
@@ -169,9 +150,9 @@ def sql(project_name):
     """
     # 自动集成flask-sqlalchemy扩展
     # :param project_name 项目的名称
-    fill_file_w(project_name, 'config.py', _config_sql_py)
-    fill_file_w(project_name, 'app/__init__.py', _init_sql_py)
-    fill_file_w(project_name, 'app/models.py', _sql_py)
+    fill_file(project_name, 'config.py', _config_sql_py)
+    fill_file(project_name, 'app/__init__.py', _init_sql_py)
+    fill_file(project_name, 'app/models.py', _sql_py)
     click.echo("integrate flask-sqlalchemy ... done!")
 
 
@@ -179,11 +160,11 @@ def sql(project_name):
 @click.argument('project_name')
 def manage(project_name):
     """
-    create manage.py to manage project
+	create manage.py help me:)
     """
     # 创建 manage.py 文件
     # 调用 fill_file 函数
-    fill_file_w(project_name, 'manage.py', _management_py)
+    fill_file(project_name, 'manage.py', _management_py)
     click.echo("create ... done!")
 
 
@@ -210,19 +191,18 @@ def blue(project_name, blueprint_name, prefix):
     # create blueprint files
     os.system("cd %s/app/%s && touch __init__.py views.py forms.py" % (project_name, blueprint_name))
     # create Blueprint obj:: blueprint
-    fill_file_w(project_name+'/app/'+blueprint_name, '__init__.py', _blueprint_py % make_tuple(blueprint_name, 2))
+    fill_file(project_name+'/app/'+blueprint_name, '__init__.py', _blueprint_py % make_tuple(blueprint_name, 2))
     # register blueprint
     # blue命令可以注册多个蓝图
     # 为了更灵活的处理蓝图的注册,蓝图注册不预填代码模版
     # 而是直接插入代码片段,进行注册
     #   :ex: "app.register_blueprint('%s')" % blueprint_name + _init_py
     if prefix:
-        blue_code = "app.register_blueprint('%s', url_prefix='%s')\n" % (blueprint_name, prefix)
+        blue_code = "app.register_blueprint('%s', url_prefix='%s')" % (blueprint_name, prefix)
     else:
-        blue_code = "app.register_blueprint('%s')\n" % blueprint_name
+        blue_code = "app.register_blueprint('%s')" % blueprint_name
     # app:__init__.py 在使用蓝图后，更多的是用于分发请求
-    # open:app::__init__.py 直接在蓝图注册区写入
-    fill_file_r(project_name, 'app/__init__.py', blue_code)
+    fill_file(project_name, 'app/__init__.py', _init_py + blue_code)
     # ...done !
     click.echo("create ... done!")
 
@@ -236,7 +216,7 @@ def deploy(project_name, host, port):
     """deploy your flask application"""
     click.echo("create wsgi file")
     os.system("cd %s && touch wsgi.py" % project_name)
-    fill_file_w(project_name, 'wsgi.py', _wsgi_py % (host, port))
+    fill_file(project_name, 'wsgi.py', _wsgi_py % (host, port))
 
 
 ###########################

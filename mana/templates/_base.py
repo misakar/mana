@@ -9,7 +9,7 @@
 """
 
 
-_init_py ='''# coding: utf-8
+_init_head_py ='''# coding: utf-8
 """
 
     ~~~~~~~
@@ -18,16 +18,20 @@ _init_py ='''# coding: utf-8
 
 from flask import Flask
 from config import config
+'''
 
 
-app = Flask(__name__)
+_init_middle_py = '''app = Flask(__name__)
 
 
 app.config.from_object(config['default'])
-
-
-from . import views, models, forms
 '''
+
+
+_init_tail_py = '''from . import views, models, forms'''
+
+
+_init_blue_py = ''''''
 
 
 _init_sql_py = '''# coding: utf-8
