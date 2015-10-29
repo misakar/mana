@@ -79,13 +79,13 @@ def cli():
 
 
 @click.command()
-@click.argument('project_name', default="my_project")
+@click.argument('project_name')
 def init(project_name):
     """
 	init your project
-	:param project_name 你项目的名字
-	:default 默认是 "my_project"
-	"""
+    """
+    # :param project_name 你项目的名字
+    # :default 默认是 "my_project"
     # 将 project 声明为全局变量，用于存储项目基本信息
     global project
     project = project_name
@@ -116,14 +116,14 @@ def init(project_name):
 def install(venv):
     """
 	install your flask extensions
-	安装flask扩展
-	:venv 虚拟环境 默认是 False
-	:--venv 创建虚拟环境，并在虚拟环境下安装扩展
-	:--no-venv 在全局环境中安装扩展
-	需要在 'requirement' 文件中预填扩展
-	:example
-		Flask==0.10
-	"""
+    """
+    # 安装flask扩展
+	# :venv 虚拟环境 默认是 False
+	# :--venv 创建虚拟环境，并在虚拟环境下安装扩展
+	# :--no-venv 在全局环境中安装扩展
+	# 需要在 'requirement' 文件中预填扩展
+	# :example
+	# 	Flask==0.10
     if venv:
         click.echo("creating venv")
         os.system("virtualenv venv")
@@ -144,9 +144,9 @@ def install(venv):
 def sql(project_name):
     """
 	integrate flask-sqlalchemy
-	自动集成flask-sqlalchemy扩展
-	:param project_name 项目的名称
-	"""
+    """
+    # 自动集成flask-sqlalchemy扩展
+    # :param project_name 项目的名称
     fill_file(project_name, 'config.py', _config_sql_py)
     fill_file(project_name, 'app/__init__.py', _init_sql_py)
     fill_file(project_name, 'app/models.py', _sql_py)
@@ -158,36 +158,37 @@ def sql(project_name):
 def manage(project_name):
     """
 	create manage.py help me:)
-	创建 manage.py 文件
-	调用 fill_file 函数
-	"""
-    fill_file(project_name, 'manage.py', _management_py % project_name)
+    """
+    # 创建 manage.py 文件
+    # 调用 fill_file 函数
+    fill_file(project_name, 'manage.py', _management_py)
     click.echo("create ... done!")
 
 
 """:version 2.0"""
 @click.command()
+@click.argument('project_name')
 @click.argument('blueprint_name')
-@click.options('--prefix', default=False, help="the url_prefix of blueprint")
-def blue(blueprint_name, prefix):
+@click.option('--prefix', default=False, help="the url_prefix of blueprint")
+def blue(project_name, blueprint_name, prefix):
     """
     create blueprint
-    创建蓝图
-    :ex mana blue book
-        book = Blueprint('book', __name__, template_folder='templates', static_folder='static')
-        app.register_blueprint(book)
-    :ex mana blue book --prefix="/book"
-        app.register_blueprint(book, url_prefix="/book")
-    :ex mana blue book --subdomain="book"
-        app.register_blueprint(book, subdomain='book')
     """
+    # 创建蓝图
+    # :ex mana blue book
+    #     book = Blueprint('book', __name__, template_folder='templates', static_folder='static')
+    #     app.register_blueprint(book)
+    # :ex mana blue book --prefix="/book"
+    #     app.register_blueprint(book, url_prefix="/book")
+    # :ex mana blue book --subdomain="book"
+    #     app.register_blueprint(book, subdomain='book')
     click.echo("create flask Blueprint obj %s" % blueprint_name)
     # create blueprint folder
-    os.system("mkdir %s" % blueprint_name)
+    os.system("cd %s/app && mkdir %s" % (project_name, blueprint_name))
     # create blueprint files
-    os.system("cd %s && touch __init__.py views.py forms.py" % blueprint_name)
+    os.system("cd %s/app/%s && touch __init__.py views.py forms.py" % (project_name, blueprint_name))
     # create Blueprint obj:: blueprint
-    fill_file(blueprint_name, '__init__.py', _blueprint_py % blueprint_name)
+    fill_file(project_name+'/app/'+blueprint_name, '__init__.py', _blueprint_py % make_tuple(blueprint_name, 2))
     # register blueprint
     # blue命令可以注册多个蓝图
     # 为了更灵活的处理蓝图的注册,蓝图注册不预填代码模版
@@ -198,7 +199,7 @@ def blue(blueprint_name, prefix):
     else:
         blue_code = "app.register_blueprint('%s')" % blueprint_name
     # app:__init__.py 在使用蓝图后，更多的是用于分发请求
-    fill_file(project, 'app/__init__.py', _init_py + blue_code)
+    fill_file(project_name, 'app/__init__.py', _init_py + blue_code)
     # ...done !
     click.echo("create ... done!")
 

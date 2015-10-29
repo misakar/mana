@@ -15,7 +15,7 @@ sys.setdefaultencoding('utf-8')
 
 manager = Manager(app)
 migrate = Migrate(app, db)
-admin = Admin(app, name=project_name)
+admin = Admin(app, name="")
 
 
 def make_shell_context():

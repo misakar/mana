@@ -50,8 +50,6 @@ app.config.from_object(config['default'])
 
 db = SQLAlchemy(app)
 
-# blueprint register
-%s
 
 from . import views, models, forms
 '''
