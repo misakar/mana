@@ -163,6 +163,8 @@ ex:
     2015-1028: rewrite README for more detail
     ----------------------------------------------------
     2015-1029: add mana deploy to deploy flask app on wsgi server
+    ----------------------------------------------------
+    2015-1030: fix ISSUE #3 && happy🍺agenerate flask project
 
 
 
