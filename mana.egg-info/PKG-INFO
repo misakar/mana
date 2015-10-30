@@ -1,7 +1,7 @@
 Metadata-Version: 1.1
 Name: mana
-Version: 2.1
-Summary: fast generate flask project
+Version: 2.2
+Summary: happy generate flask project
 Home-page: https://github.com/neo1218/mana
 Author: neo1218
 Author-email: neo1218@yeah.net
@@ -10,7 +10,7 @@ Description:
             mana
             ~~~~
         
-            fast generate flask project
+            happy generate flask project
         
 Platform: any
 Classifier: Environment :: Web Environment

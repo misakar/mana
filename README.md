@@ -46,9 +46,9 @@ mana
                     |                        static
 
 文件中预填代码<br/>
-[app/__init__.py预填代码](https://github.com/neo1218/mana/blob/master/examples/GoodIdea/app/__init__.py) : 创建了flask app, 导入了基本配置
-[config.py预填代码](): 测试、生产、开发环境下配置
-[models.py预填代码](): 导入 db 对象
+[app/__init__.py预填代码](https://github.com/neo1218/mana/blob/master/examples/GoodIdea/app/__init__.py) : 创建了flask app, 导入了基本配置 <br/>
+[config.py预填代码](): 测试、生产、开发环境下配置 <br/>
+[models.py预填代码](): 导入 db 对象 <br/>
 
 #### 3. 构建大型项目(有蓝图、有数据库、有配置文件)
 
@@ -192,7 +192,8 @@ ex:
     2015-1030: fix ISSUE #3 && happy🍺agenerate flask project
     ----------------------------------------------------
     2015-1030: delete sql and add --sql --config to init
-
+    ----------------------------------------------------
+    2015-1030: update README + upload mana2.2 to PyPi !!!!
 
 
 ## powered by click

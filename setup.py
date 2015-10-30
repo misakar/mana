@@ -11,7 +11,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='mana',
-    version='2.1',
+    version='2.2',
     packages=find_packages(),
     url='https://github.com/neo1218/mana',
     license='MIT',
