@@ -26,7 +26,7 @@ mana
 
                     |-app/              ---- __init__.py
                     |-test/
-    my_project   -  |                        views.py
+    my_project   -  |-manage.py              views.py
                     |-requirement.txt        forms.py
                     |-README.md              templates
                     |                        static
@@ -198,6 +198,8 @@ ex:
     2015-1030: delete sql and add --sql --config to init
     ----------------------------------------------------
     2015-1030: update README + upload mana2.2 to PyPi !!!!
+    ----------------------------------------------------
+    2015-1030: update mana init --> yes we can run!!!!
 
 
 ## powered by click

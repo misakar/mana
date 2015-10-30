@@ -33,7 +33,7 @@ import os
 from templates._base import _init_py, _init_sql_py, _init_config_py
 from templates._config import _config_sql_py, _config_py
 from templates._sql import _sql_py
-from templates._management import _management_py
+from templates._management import _management_py, _manage_py
 from templates._blueprint import _blueprint_py
 from templates._deploy import _wsgi_py
 
@@ -121,8 +121,8 @@ def init(project_name, sql, config):
 
     if config:
         os.system("touch %s/config.py" % project_name)
-    os.system("touch %s/README.md %s/requirement.txt" \
-            % make_tuple(project_name, 2))
+    os.system("touch %s/README.md %s/requirement.txt %s/manage.py" \
+            % make_tuple(project_name, 3))
     os.system("mkdir %s/app/ %s/test/" \
             % make_tuple(project_name, 2))
 
@@ -149,6 +149,7 @@ def init(project_name, sql, config):
         os.system("mana manage %s" % project_name)
     else:
         fill_file_w(project_name, 'app/__init__.py', _init_py)
+        fill_file_w(project_name, 'manage.py', _manage_py)
 
     click.echo("init ... done!🍺 ")
 
