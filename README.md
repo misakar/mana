@@ -165,6 +165,8 @@ ex:
     2015-1029: add mana deploy to deploy flask app on wsgi server
     ----------------------------------------------------
     2015-1030: fix ISSUE #3 && happy🍺agenerate flask project
+    ----------------------------------------------------
+    2015-1030: delete sql and add --sql --config to init
 
 
 

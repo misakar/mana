@@ -31,7 +31,7 @@ manager.add_command('db', MigrateCommand)
 
 
 # 后台数据库管理界面
-admin.add_view(ModelView([models], db.session))
+# admin.add_view(ModelView([models], db.session))
 
 
 @manager.command

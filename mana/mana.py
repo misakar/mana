@@ -11,9 +11,10 @@
 
         :version 1.0
         mana init project_name                 # init your project
+            --config                           # create config.py for dev test product environment
+            --sql                              # integrate with flask-sqlalchemy
         mana install                           # install your flask extensions
             --venv                             # with virtualenv
-        mana sql project_name                  # integrate with flask-sqlalchemy
         mana manage project_name               # create manage.py to manage the project
 
         :version 2.0
@@ -28,7 +29,8 @@
 import click
 import os
 # import code templates
-from templates._base import _init_head_py, _init_middle_py, _init_tail_py, _init_blue_py, _init_sql_py
+# from templates._base import _init_head_py, _init_middle_py, _init_tail_py, _init_blue_py, _init_sql_py
+from templates._base import _init_py, _init_sql_py, _init_config_py
 from templates._config import _config_sql_py, _config_py
 from templates._sql import _sql_py
 from templates._management import _management_py
@@ -102,7 +104,9 @@ def cli():
 
 @click.command()
 @click.argument('project_name')
-def init(project_name):
+@click.option('--sql', default=False, help="integrate with flask-sqlalchemy")
+@click.option('--config', default=False, help="create config.py for dev product test environment")
+def init(project_name, sql, config):
     """
 	init your project
     """
@@ -114,12 +118,18 @@ def init(project_name):
 
 	# 在python中执行shell命令
     os.system("mkdir %s" % project_name)
-    os.system("touch %s/README.md %s/config.py %s/requirement.txt" \
-            % make_tuple(project_name, 3))
+
+    if config:
+        os.system("touch %s/config.py" % project_name)
+    os.system("touch %s/README.md %s/requirement.txt" \
+            % make_tuple(project_name, 2))
     os.system("mkdir %s/app/ %s/test/" \
             % make_tuple(project_name, 2))
-    os.system("touch %s/app/__init__.py %s/app/models.py %s/app/views.py %s/app/forms.py" % \
-            make_tuple(project_name, 4))
+
+    if sql:
+        os.system("touch %s/app/models.py" % project_name)
+    os.system("touch %s/app/__init__.py %s/app/views.py %s/app/forms.py" % \
+            make_tuple(project_name, 3))
     os.system("mkdir %s/app/templates/ %s/app/static/" % \
             make_tuple(project_name, 2))
     os.system("cd ..")
@@ -127,10 +137,20 @@ def init(project_name):
     # happy coding
 	# 调用 fill_file 函数
 	# 初始化的时候调用模版预填代码
-    fill_file_w(project_name, 'config.py', _config_py)
-    fill_file_w(project_name, 'app/__init__.py', (_init_head_py + _init_middle_py + _init_blue_py))
+    if config:
+        fill_file_w(project_name, 'app/__init__.py', _init_config_py)
+        fill_file_w(project_name, 'config.py', _config_py)
 
-    click.echo("init ... done!")
+    elif sql:
+        fill_file_w(project_name, 'app/__init__.py', _init_sql_py)
+        fill_file_w(project_name, 'config.py', _config_sql_py)
+        fill_file_w(project_name, 'app/models.py', _sql_py)
+        # 调用mana命令
+        os.system("mana manage %s" % project_name)
+    else:
+        fill_file_w(project_name, 'app/__init__.py', _init_py)
+
+    click.echo("init ... done!🍺 ")
 
 
 @click.command()
@@ -158,21 +178,7 @@ def install(venv):
         click.echo("install extensions")
 		# use sudo
         os.system("sudo pip install -r requirement.txt")
-        click.echo("install ... done!")
-
-
-@click.command()
-@click.argument('project_name')
-def sql(project_name):
-    """
-	integrate flask-sqlalchemy
-    """
-    # 自动集成flask-sqlalchemy扩展
-    # :param project_name 项目的名称
-    fill_file_w(project_name, 'config.py', _config_sql_py)
-    fill_file_w(project_name, 'app/__init__.py', _init_sql_py)
-    fill_file_w(project_name, 'app/models.py', _sql_py)
-    click.echo("integrate flask-sqlalchemy ... done!")
+        click.echo("install ... done!🍺 ")
 
 
 @click.command()
@@ -184,7 +190,7 @@ def manage(project_name):
     # 创建 manage.py 文件
     # 调用 fill_file 函数
     fill_file_w(project_name, 'manage.py', _management_py)
-    click.echo("create ... done!")
+    click.echo("manage... done! 🍺 ")
 
 
 """:version 2.0"""
@@ -224,7 +230,7 @@ def blue(project_name, blueprint_name, prefix):
     # open:app::__init__.py 直接在蓝图注册区写入
     fill_file_r(project_name, 'app/__init__.py', blue_code)
     # ...done !
-    click.echo("create ... done!")
+    click.echo("blueprint... done!🍺 ")
 
 
 """:version 2.1"""
@@ -238,12 +244,13 @@ def deploy(project_name, host, port):
     os.system("cd %s && touch wsgi.py" % project_name)
     fill_file_w(project_name, 'wsgi.py', _wsgi_py % (host, port))
 
+    click.echo("deploy wsgi...done!🍺 ")
+
 
 ###########################
 # mana command set
 cli.add_command(init)
 cli.add_command(install)
-cli.add_command(sql)
 cli.add_command(manage)
 cli.add_command(blue)
 cli.add_command(deploy)

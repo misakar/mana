@@ -1,14 +1,5 @@
 # coding: utf-8
 
-"""
-    _management.py
-
-        management.py 代码模版预填文件
-"""
-
-
-_management_py='''# coding: utf-8
-
 import sys
 from flask.ext.script import Manager, Shell
 from flask.ext.migrate import Migrate, MigrateCommand
@@ -54,4 +45,3 @@ def test():
 if __name__ == '__main__':
     app.debug = True
     manager.run()
-'''

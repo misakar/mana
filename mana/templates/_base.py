@@ -9,7 +9,7 @@
 """
 
 
-_init_head_py ='''# coding: utf-8
+_init_py ='''# coding: utf-8
 """
 
     ~~~~~~~
@@ -17,21 +17,14 @@ _init_head_py ='''# coding: utf-8
 """
 
 from flask import Flask
-from config import config
+
+
+app = Flask(__name__)
+app.config["SECRET_KEY"] = "I love mana!"  # you can change it :)
+
+
+from . import views, forms
 '''
-
-
-_init_middle_py = '''app = Flask(__name__)
-
-
-app.config.from_object(config['default'])
-'''
-
-
-_init_tail_py = '''from . import views, models, forms'''
-
-
-_init_blue_py = ''''''
 
 
 _init_sql_py = '''# coding: utf-8
@@ -53,6 +46,26 @@ app.config.from_object(config['default'])
 
 
 db = SQLAlchemy(app)
+
+
+from . import views, models, forms
+'''
+
+
+_init_config_py='''# coding: utf-8
+"""
+
+    ~~~~~~~~
+
+"""
+
+from flask import Flask
+from config import config
+
+app = Flask(__name__)
+
+
+app.config.from_object(config['default'])
 
 
 from . import views, models, forms
