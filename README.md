@@ -11,6 +11,10 @@ mana
 
             ..................So..........Use.........mana...................
 
+## 安装mana:
+
+    $ sudo pip install mana
+
 
 ## 使用mana:
 ### 1. mana init --> 构建你的项目
