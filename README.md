@@ -32,7 +32,7 @@ mana
                     |                        static
 
 文件中预填代码<br/>
-[app/__init__.py预填代码](https://github.com/neo1218/mana/blob/master/examples/GoodIdea/app/__init__.py) : 创建了flask app, 导入了基本配置 <br/>
+[app/__init__.py预填代码]() : 创建了flask app, 导入了基本配置 <br/>
 现在你只需开开兴兴的写视图了
 
 #### 2. 构建中型项目(无蓝图、有数据库、有配置文件)
@@ -50,7 +50,7 @@ mana
                     |                        static
 
 文件中预填代码<br/>
-[app/__init__.py预填代码](https://github.com/neo1218/mana/blob/master/examples/GoodIdea/app/__init__.py) : 创建了flask app, 导入了基本配置 <br/>
+[app/__init__.py预填代码]() : 创建了flask app, 导入了基本配置 <br/>
 [config.py预填代码](): 测试、生产、开发环境下配置 <br/>
 [models.py预填代码](): 导入 db 对象 <br/>
 
