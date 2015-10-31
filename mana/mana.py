@@ -258,7 +258,7 @@ def version():
 @click.command()
 def home():
     """go to the homepage of mana"""
-    os.system('python -m webbrowser -t "https://121.43.230.104:520/mana"')
+    os.system('python -m webbrowser -t "http://121.43.230.104:520/mana"')
 
 
 ###########################
