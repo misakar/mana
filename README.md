@@ -11,7 +11,7 @@ mana
 
             ..................So..........Use.........mana...................
 
-## 安装mana:
+## 安装mana(current version: 2.4 🍺 ):
 
     $ sudo pip install mana
 

@@ -248,6 +248,19 @@ def deploy(project_name, host, port):
     click.echo("deploy wsgi...done!🍺 ")
 
 
+""":version 2.3"""
+@click.command()
+def version():
+    """show the mana version you installed"""
+    click.echo("mana version: 2.4 🍺 ")
+
+
+@click.command()
+def home():
+    """go to the homepage of mana"""
+    os.system("open https://github.com/neo1218/mana")
+
+
 ###########################
 # mana command set
 cli.add_command(init)
@@ -255,4 +268,6 @@ cli.add_command(install)
 cli.add_command(manage)
 cli.add_command(blue)
 cli.add_command(deploy)
+cli.add_command(version)
+cli.add_command(home)
 ###########################
