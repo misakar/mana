@@ -252,7 +252,7 @@ def deploy(project_name, host, port):
 @click.command()
 def version():
     """show the mana version you installed"""
-    click.echo("mana version: 2.5 🍺 ")
+    click.echo("mana version: 2.6 🍺 ")
 
 
 @click.command()
