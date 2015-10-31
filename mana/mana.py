@@ -252,13 +252,13 @@ def deploy(project_name, host, port):
 @click.command()
 def version():
     """show the mana version you installed"""
-    click.echo("mana version: 2.4 🍺 ")
+    click.echo("mana version: 2.5 🍺 ")
 
 
 @click.command()
 def home():
     """go to the homepage of mana"""
-    os.system("open https://121.43.230.104:520/mana")
+    os.system('python -m webbrowser -t "https://121.43.230.104:520/mana"')
 
 
 ###########################
