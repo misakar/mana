@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="dc.creator" content="neo1218 - http://https://github.com/neo1218">
+    
+    <title>Mana — happy generate flask project</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="http://brew.sh/img/favicon.ico">
+    <link rel="icon" sizes="16x16" href="http://brew.sh/img/favicon-16x16.png">
+    <link rel="icon" sizes="32x32" href="http://brew.sh/img/favicon-32x32.png">
+    <link rel="icon" sizes="96x96" href="http://brew.sh/img/favicon-96x96.png">
+    <link rel="icon" sizes="192x192" href="http://brew.sh/img/favicon-192x192.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://brew.sh/img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://brew.sh/img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://brew.sh/img/apple-touch-icon-76x76-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://brew.sh/img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://brew.sh/img/apple-touch-icon-120x120-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://brew.sh/img/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://brew.sh/img/apple-touch-icon-152x152-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="http://brew.sh/img/apple-touch-icon-180x180-precomposed.png">
+    <link rel="stylesheet" href="/static/Mana/screen.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/static/Mana/pygments.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/static/Mana/chunkfive.css" type="text/css" media="screen">
+    
+    
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="header">
+        <h1><a href="http://brew.sh/">Mana</a></h1>
+        <p id="subtitle"><strong>happy🍺 generate flask project</strong></p>
+      </div>
+
+      <div id="informations">
+        <ul>
+          <li>
+            <div class="group row">
+              <h2 id="install">安装Mana🍺:)&nbsp;&nbsp;</h2>
+              <br>
+              <pre style="clear:both;text-align:center;margin-bottom:0.9em"><code id="selectable" onclick="selectText(this)">$ sudo pip install mana</code></pre>
+            </div>
+          </li>
+
+          <li>
+            <div class="group row">
+             <h2 id="question">Mana能为你做些什么</h2>
+             <br>
+              <div class="col-1">
+                <p>1.构建一般项目(无蓝图、无数据库、无配置文件)</p>
+              </div>
+              <div class="col-2">
+<div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)">$ mana init my_project</code></pre></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="group row">
+              <div class="col-1">
+                <p>创建的目录结构(如图)</p>
+                <p>文件中预填代码
+app/init.py预填代码 : 创建了flask app, 导入了基本配置 
+现在你只需开开心心的写视图了</p>
+              </div>
+              <div class="col-2">
+<div class="highlight"><pre><code class="language-bash" data-lang="bash" >
+                |-app/              ---__init__.py
+                |-test/
+my_project   -  |-manage.py            views.py
+                |-requirement.txt      forms.py
+                |-README.md            templates
+                |                      static
+</code></pre></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="group row">
+              <div class="col-1">
+                <p>2.构建中型项目(无蓝图、有数据库、有配置文件)</p>
+                <p>默认集成的是flask-sqlalchemy数据库扩展🍺</p>
+                <p>文件中预填代码</p>
+                <p>app/init.py预填代码 : 创建了flask app, 导入了基本配置 </p>
+                <p>config.py预填代码: 测试、生产、开发环境下配置</p>
+                <p>models.py预填代码: 导入 db 对象 </p>
+              </div>
+              <div class="col-2">
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)">$ mana init my_project --sql=true</code></pre></div>
+              <div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">
+                |-app/              ---__init__.py
+                |-test/
+my_project   -  |-manage.py            views.py
+                |-requirement.txt      forms.py
+                |-README.md            templates
+                |                      static
+</code></pre></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="group row">
+              <div class="col-1">
+                <p>3.构建大型项目(有蓝图、有数据库、有配置文件)</p>
+                <p>将mana init与mana blue搭配使用</p>
+              </div>
+              <div class="col-2">
+<div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)"># 构建项目
+$ mana init my_project --sql=true
+
+# 自动创建、注册蓝图
+$ mana blue my_project <蓝图名></code></pre></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="group row">
+              <div class="col-1">
+                <p>4.mana install (--venv) --> 安装flask扩展</p>
+                <p>在 requirement.txt 中写入你希望安装的扩展的名称</p>
+                </br>
+                <p>进入与requirement文件同级的目录然后运行安装命令</p>
+                </br>
+                <p>这个命令会自动创建并进入虚拟环境,将requirement文件中的扩展安装在该环境中
+如果你希望在全局环境中安装扩展，你可以不使用--venv 选项</p>
+              </div>
+              <div class="col-2">
+<div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)">flask==0.10
+click
+mana
+</code></pre></div>
+              </div>
+              <div class="col-2">
+<div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)">$ mana install --venv
+</code></pre></div>
+              </div>
+              <div class="col-2">
+<div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)">$ mana install
+</code></pre></div>
+              </div>
+          <li>
+          <li>
+            <div class="group row">
+              <div class="col-1">
+                <p>5.还可以使用mana创建manage.py集成flask-script和flask-migrate管理我们的项目</p>
+                <p>现在可以使用manage.py进行数据库迁移和更新了</p>
+                </br>
+                <p>使用manage.py启动服务器(运行项目)</p>
+                </br>
+                <p>这个命令会自动创建并进入虚拟环境,将requirement文件中的扩展安装在该环境中
+如果你希望在全局环境中安装扩展，你可以不使用--venv 选项</p>
+                </br>
+                <p>配置shell环境 
+如果你希望在shell中自动导入模块(ex: 导入User)的话</p>
+               </br>
+               </br>
+               </br>
+               </br>
+               </br>
+               </br>
+               </br>
+               </br></br></br>
+                <p>效果:</p>
+              </div>
+              <div class="col-2">
+<div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)">进入与项目根目录同级的目录 🍺
+$ mana manage project_name
+</code></pre></div>
+              </div>
+              <div class="col-2">
+<div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)">$ python manage.py db init
+$ python manage.py db migrate -m "v1.0"
+$ python manage.py db upgrade
+</code></pre></div>
+              </div>
+              <div class="col-2">
+<div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)">$ python manage.py runserver
+</code></pre></div>
+              </div>
+              <div class="col-2">
+<div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)">from app.models import User
+
+def make_shell_context():
+"""自动加载环境"""
+return dict(
+    app=app,
+    db=db,
+    User=User
+)
+</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)">python manage.py shell
+>> User
+&#60;class 'app.models.User'&#62;
+</code></pre></div>
+            
+
+          <li>
+            <div class="group row">
+              <div class="col-1">
+                <p>6. mana blue (--prefix)--> 自动注册蓝图</p>
+                </br>
+                <p>这样你就创建了一个叫bluep的蓝图,并在app中注册 
+你也可以配置蓝图的url前缀</p>
+</br>
+<p>这样就可以通过 /bluep/... 去访问蓝图对应的视图</p>
+              </div>
+              <div class="col-2">
+<div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)">进入与项目根目录同级的目录 🍺
+$ mana blue project_name bluep</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)">$ mana blue project_name bluep --prefix="/bluep"</code></pre></div>
+              </div>
+            </div>
+          
+            <div class="col-1">
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;7. mana deploy --> deploy flask application on wsgi server</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;进入与项目根目录同级的目录 🍺</p>
+                <div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)">$ mana blue project_name bluep</code></pre></div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;这样就可以创建wsgi.py去部署你的flask应用</p>
+              </div>
+    <a href="https://github.com/neo1218/mana"><img id="forkme" src="/static/Mana/right-grey@2x.png" alt="Fork me on GitHub"></a>
+</br>
+</br>
+<div class="group row credits">
+              <p>Original code by <a href="https://github.com/neo1218/mana">neo1218</a></p>
+            </div>
+    <script>
+      function selectText(elem) {
+        if (document.selection) {
+            var range = document.body.createTextRange();
+            range.moveToElementText(elem);
+            range.select();
+        } else if (window.getSelection) {
+            var range = document.createRange();
+            range.selectNode(elem);
+            window.getSelection().addRange(range);
+        }
+      }
+
+      function loadLanguage(lang) {
+        if (lang === "en") {
+            return;
+        } else if (lang === "en") {
+            window.location.replace("index.html");
+        } else {
+            window.location.replace("index_" + lang + ".html");
+        }
+      }
+    </script>
+  
+
+</body></html>
