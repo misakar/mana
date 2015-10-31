@@ -258,7 +258,7 @@ def version():
 @click.command()
 def home():
     """go to the homepage of mana"""
-    os.system("open https://github.com/neo1218/mana")
+    os.system("open https://121.43.230.104:520/mana")
 
 
 ###########################

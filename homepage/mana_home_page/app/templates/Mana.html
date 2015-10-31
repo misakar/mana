@@ -19,9 +19,9 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://brew.sh/img/apple-touch-icon-144x144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://brew.sh/img/apple-touch-icon-152x152-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="180x180" href="http://brew.sh/img/apple-touch-icon-180x180-precomposed.png">
-    <link rel="stylesheet" href="./Mana/screen.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="./Mana/pygments.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="./Mana/chunkfive.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/static/Mana/screen.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/static/Mana/pygments.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/static/Mana/chunkfive.css" type="text/css" media="screen">
     <style>
 li {list-style-type:none;}
 h3{text-align:center;font-size: 26px;}
@@ -31,7 +31,7 @@ h3{text-align:center;font-size: 26px;}
   <body>
     <div id="wrap">
       <div id="header">
-        <h1><a href="http://brew.sh/">Mana</a></h1>
+        <h1><a href="http://brew.sh/">Mana(2.4)</a></h1>
         <p id="subtitle"><strong>happy🍺 generate flask project</strong></p>
       </div>
 
@@ -53,7 +53,7 @@ h3{text-align:center;font-size: 26px;}
              </br>
              </br>
              </br>
-             <h3 id="question">mana init(--sql = true) 构建你的项目</h3>
+             <h3 id="question">mana init(--sql = true): 构建你的项目</h3>
              <br>
               <div class="col-1">
                 <p>1.构建一般项目(无蓝图、无数据库、无配置文件)</p>
@@ -119,7 +119,7 @@ $ mana blue my_project <蓝图名></code></pre></div>
           </li>
           <li>
             <div class="group row">
-            <h3>mana install (--venv) 安装flask扩展</h3>
+            <h3>mana install (--venv): 安装flask扩展</h3>
               <div class="col-1">
                 <p>在 requirement.txt 中写入你希望安装的扩展的名称</p>
                 </br>
@@ -145,7 +145,7 @@ mana
               </div>
           <li>
             <div class="group row">
-            <h3>mana manage project_name 管理你的项目</h3>
+            <h3>mana manage: 管理你的项目</h3>
               <div class="col-1">
                 <p>还可以使用mana创建manage.py集成flask-script和flask-migrate管理我们的项目</p>
                 </br>
@@ -204,7 +204,7 @@ return dict(
 
           <li>
             <div class="group row">
-            <h3>mana blue (--prefix) 自动注册蓝图</h3>
+            <h3>mana blue (--prefix): 自动注册蓝图</h3>
               <div class="col-1">
                 
                 <p>这样你就创建了一个叫bluep的蓝图,并在app中注册 
@@ -220,12 +220,12 @@ $ mana blue project_name bluep</code></pre></div>
             </div>
           
             <div class="col-1">
-                <h3>&nbsp;&nbsp;&nbsp;mana deploy deploy flask application on wsgi server</h3>
+                <h3>&nbsp;&nbsp;&nbsp;mana deploy(--port, --host): deploy flask application on wsgi server</h3>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;进入与项目根目录同级的目录 🍺</p>
-                <div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)">$ mana blue project_name bluep</code></pre></div>
+                <div class="highlight"><pre><code class="language-bash" data-lang="bash" id="selectable" onclick="selectText(this)">$ mana deploy project_name --host=公网IP --port=端口</code></pre></div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;这样就可以创建wsgi.py去部署你的flask应用</p>
               </div>
-    <a href="https://github.com/neo1218/mana"><img id="forkme" src="./Mana/right-grey@2x.png" alt="Fork me on GitHub"></a>
+    <a href="https://github.com/neo1218/mana"><img id="forkme" src="/static/Mana/right-grey@2x.png" alt="Fork me on GitHub"></a>
 </br>
 </br>
 <div class="group row credits">
