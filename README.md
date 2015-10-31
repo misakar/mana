@@ -11,7 +11,7 @@ mana
 
             ..................So..........Use.........mana...................
 
-Features, usage and installation instructions are summarised on [the homepage](http://121.43.230.104:520/mana). <br/>
+<h2>Features, usage and installation instructions are summarised on [the homepage](http://121.43.230.104:520/mana).</h2><br/>
 
 
 ## 对mana的思考
