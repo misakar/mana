@@ -7,7 +7,7 @@ mana
 #### 1. I Don't Want Waste Time on --mkdir--
 #### 2. I Don't Want [virtualenv venv] [. venv/bin/activate] and [ pip pip pip...]
 #### 3. I Don't Want [from flask.ext.xxx import Xxx] [xxx = Xxx(app)]
-#### 4. I Don't Want [blue = Blueprint('blue'..)] [app.regist_blueprint('blue', url_prefix="/blue")]
+#### 4. I Don't Want [blue = Blueprint('blue'..)] [app.register_blueprint('blue', url_prefix="/blue")]
 
             ..................So..........Use.........mana...................
 
