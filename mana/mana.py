@@ -9,7 +9,7 @@
         copyright: (c) 2015 by neo1218.
         :license: MIT, see LICENSE for more details.
 
-        :version 1.0
+        :version 1.x
         mana init project_name                 # init your project
             --config                           # create config.py for dev test product environment
             --sql                              # integrate with flask-sqlalchemy
@@ -17,19 +17,16 @@
             --venv                             # with virtualenv
         mana manage project_name               # create manage.py to manage the project
 
-        :version 2.0
+        :version 2.x
         mana blue book                         # create a blueprint book, automatic regiest blueprint
             --prefix                           # url_prefix of blueprint
-
-        :version 2.1
         mana deploy wsgi                       # deploy your flask application on wsgi server
 
+		:version 3.x						   # compatible with windows
 """
 
 import click
 import os
-# import code templates
-# from templates._base import _init_head_py, _init_middle_py, _init_tail_py, _init_blue_py, _init_sql_py
 from templates._base import _init_py, _init_sql_py, _init_config_py
 from templates._config import _config_sql_py, _config_py
 from templates._sql import _sql_py
@@ -39,28 +36,15 @@ from templates._deploy import _wsgi_py
 
 
 ###########################################################
+basedir = os.path.abspath(os.path.dirname(__file__))      #
 project = "my_project"  # store project info              #
 # project name can help us find the basic pwd             #
 ###########################################################
 
 
-def make_tuple(name, count):
-    """
-	格式化元组工厂函数
-	:param name:
-	:param count:
-	"""
-    format_tuple = []
-    for i in range(count):
-        format_tuple.append(name)
-    return tuple(format_tuple)
-
-
 def fill_file_w(floder, filename, pre_code):
     """
-	文件中填入预填代码:
-	预填代码从templates模版中获取
-    覆盖原文件,主要用于初始代码预填
+	fill the file with the pre_code from templates
 	:param project_name
 	:param filename
 	:param pre_code
@@ -121,17 +105,13 @@ def init(project_name, sql, config):
 
     if config:
         os.system("touch %s/config.py" % project_name)
-    os.system("touch %s/README.md %s/requirement.txt %s/manage.py" \
-            % make_tuple(project_name, 3))
-    os.system("mkdir %s/app/ %s/test/" \
-            % make_tuple(project_name, 2))
+    os.system("touch %s/README.md %s/requirement.txt %s/manage.py" % (project_name,)*3)
+    os.system("mkdir %s/app/ %s/test/" % (project_name,)*2)
 
     if sql:
         os.system("touch %s/app/models.py" % project_name)
-    os.system("touch %s/app/__init__.py %s/app/views.py %s/app/forms.py" % \
-            make_tuple(project_name, 3))
-    os.system("mkdir %s/app/templates/ %s/app/static/" % \
-            make_tuple(project_name, 2))
+    os.system("touch %s/app/__init__.py %s/app/views.py %s/app/forms.py" % (project_name,)*3)
+    os.system("mkdir %s/app/templates/ %s/app/static/" % (project_name,)*2)
     os.system("cd ..")
 
     # happy coding
