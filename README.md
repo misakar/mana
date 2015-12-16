@@ -67,7 +67,8 @@ mana
     2015-1031: add mana homepage!!!
     ----------------------------------------------------
     2015-1031: mana2.5 fix issue #8
-
+    ----------------------------------------------------
+    2015-1217: write mana doc:
 
 ## powered by click
 [click源码](https://github.com/mitsuhiko/click) 😄  <br/>

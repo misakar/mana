@@ -3,26 +3,17 @@
 """
     mana
     ~~~~
+    the missing startapp command for flask
 
-        happy generate flask project
+    mana init my_project
+    \__ SQL Database(Y/N)
 
-        copyright: (c) 2015 by neo1218.
-        :license: MIT, see LICENSE for more details.
+    mana blueprint my_blueprint
 
-        :version 1.x
-        mana init project_name                 # init your project
-            --config                           # create config.py for dev test product environment
-            --sql                              # integrate with flask-sqlalchemy
-        mana install                           # install your flask extensions
-            --venv                             # with virtualenv
-        mana manage project_name               # create manage.py to manage the project
+    mana deploy my_project
+    \__ IP
+    \__ Port
 
-        :version 2.x
-        mana blue book                         # create a blueprint book, automatic regiest blueprint
-            --prefix                           # url_prefix of blueprint
-        mana deploy wsgi                       # deploy your flask application on wsgi server
-
-		:version 3.x						   # compatible with windows
 """
 
 import click

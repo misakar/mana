@@ -1,6 +1,8 @@
-.pyc
-.pyo
-venv
+*.pyc
+**/*.pyc
+**/*_build/
 -1
-mana.egg-info
-dist
+venv/
+mana.egg-info/
+dist/
+_build/
