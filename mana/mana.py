@@ -1,244 +1,253 @@
 # coding: utf-8
+"""
+mana
+~~~~
+the missing startapp command for flask
+
+Usage:
+
+    mana init <project_name>
+
+    mana sqlinit <project_name>
+
+    mana blueprint <blueprint_name>
+
+    mana deploy <project_name>
+    \__ IP:
+    \__ Port:
+
+Options:
+
+    --help:     help information
+    --version:  show version
+    --home:     link to the doc page
 
 """
-    mana
-    ~~~~
-    the missing startapp command for flask
 
-    mana init my_project
-    \__ SQL Database(Y/N)
-
-    mana blueprint my_blueprint
-
-    mana deploy my_project
-    \__ IP
-    \__ Port
-
-"""
-
-import click
+import sys
 import os
-from templates._base import _init_py, _init_sql_py, _init_config_py
-from templates._config import _config_sql_py, _config_py
-from templates._sql import _sql_py
-from templates._management import _management_py, _manage_py
-from templates._blueprint import _blueprint_py
-from templates._deploy import _wsgi_py
 
+# project root path
+project_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if project_path not in sys.path:
+    sys.path.insert(0, project_path)
 
-###########################################################
-basedir = os.path.abspath(os.path.dirname(__file__))      #
-project = "my_project"  # store project info              #
-# project name can help us find the basic pwd             #
-###########################################################
+# operators
+from operators import _mkdir_p
+from operators import init_code
 
+# templates
+from templates.manage import _manage_basic_code, _manage_sql_code
+from templates.requirement import _requirement_code
+from templates.views import _views_basic_code, _views_blueprint_code
+from templates.forms import _forms_basic_code
+from templates.init import _init_basic_code, _init_code, _init_blueprint_code
+from templates.config import _config_sql_code
+from templates.models import _models_code
 
-def fill_file_w(floder, filename, pre_code):
-    """
-	fill the file with the pre_code from templates
-	:param project_name
-	:param filename
-	:param pre_code
-	"""
-	# :path 当前路径
-	# open the file path::project_name::filename and is "w+"
-	# write the pre_code into file
-    path = os.popen('pwd').readlines()[0][0:-1]
-    fo = open("%s/%s/%s" % (path, floder, filename), "w+")
-    fo.write(pre_code)
-    fo.close
-
-
-def fill_file_r(floder, filename, pre_code):
-    """
-	文件中填入预填代码:
-	预填代码从templates模版中获取
-    原文件后添加,主要用于后期代码预填
-	:param project_name
-	:param filename
-	:param pre_code
-	"""
-	# :path 当前路径
-	# open the file path::project_name::filename and is "w+"
-	# write the pre_code into file
-    path = os.popen('pwd').readlines()[0][0:-1]
-    fo = open("%s/%s/%s" % (path, floder, filename), "r+")
-    fo.read()
-    fo.write(pre_code)
-    fo.close
+# logging
+import logging
+from logging import StreamHandler, DEBUG
+# logger
+logger = logging.getLogger(__name__)
+logger.setLevel(DEBUG)
+logger.addHandler(StreamHandler())
 
 
 """use click:)"""
-""":version 1.0"""
+import click
 
 @click.group()
 def cli():
-    """happy🍺 generate flask project"""
+    """the missing startapp command for Flask"""
     pass
 
 
 @click.command()
 @click.argument('project_name')
-@click.option('--sql', default=False, help="integrate with flask-sqlalchemy")
-@click.option('--config', default=False, help="create config.py for dev product test environment")
-def init(project_name, sql, config):
+def init(project_name):
     """
-	init your project
+    mana init <project_name>
     """
-    # :param project_name 你项目的名字
-    # :default 默认是 "my_project"
-    # 将 project 声明为全局变量，用于存储项目基本信息
-    global project
-    project = project_name
 
-	# 在python中执行shell命令
-    os.system("mkdir %s" % project_name)
+    # the destination path
+    dst_path = os.path.join(os.getcwd(), project_name)
 
-    if config:
-        os.system("touch %s/config.py" % project_name)
-    os.system("touch %s/README.md %s/requirement.txt %s/manage.py" % (project_name,)*3)
-    os.system("mkdir %s/app/ %s/test/" % (project_name,)*2)
+    # dst path exist
+    if os.path.isdir(dst_path):
+        logger.warning("path: %s exist,\nplease change the project name\n \
+                and try again!" % dst_path)
+        return
 
-    if sql:
-        os.system("touch %s/app/models.py" % project_name)
-    os.system("touch %s/app/__init__.py %s/app/views.py %s/app/forms.py" % (project_name,)*3)
-    os.system("mkdir %s/app/templates/ %s/app/static/" % (project_name,)*2)
-    os.system("cd ..")
+    # start init
+    logger.info("start init your flask project!")
 
-    # happy coding
-	# 调用 fill_file 函数
-	# 初始化的时候调用模版预填代码
-    if config:
-        fill_file_w(project_name, 'app/__init__.py', _init_config_py)
-        fill_file_w(project_name, 'config.py', _config_py)
+    # create dst path
+    _mkdir_p(dst_path)
 
-    elif sql:
-        fill_file_w(project_name, 'app/__init__.py', _init_sql_py)
-        fill_file_w(project_name, 'config.py', _config_sql_py)
-        fill_file_w(project_name, 'app/models.py', _sql_py)
-        # 调用mana命令
-        os.system("mana manage %s" % project_name)
-    else:
-        fill_file_w(project_name, 'app/__init__.py', _init_py)
-        fill_file_w(project_name, 'manage.py', _manage_py)
+    # create project tree
+    os.chdir(dst_path)
 
-    click.echo("init ... done!🍺 ")
+    # create files
+    init_code('manage.py', _manage_basic_code)
+    init_code('requirement.txt', _requirement_code)
 
+    # create app/
+    app_path = os.path.join(dst_path, 'app')
+    _mkdir_p(app_path)
 
-@click.command()
-@click.option('--venv', default=True, help="install your flask extensions into virtualenv")
-def install(venv):
-    """
-	install your flask extensions
-    """
-    # 安装flask扩展
-	# :venv 虚拟环境 默认是 False
-	# :--venv 创建虚拟环境，并在虚拟环境下安装扩展
-	# :--no-venv 在全局环境中安装扩展
-	# 需要在 'requirement' 文件中预填扩展
-	# :example
-	# 	Flask==0.10
-    if venv:
-        click.echo("creating venv")
-        os.system("virtualenv venv")
-        os.system(". venv/bin/activate")
+    os.chdir(app_path)
+    # create files
+    init_code('views.py', _views_basic_code)
+    init_code('forms.py', _forms_basic_code)
+    init_code('__init__.py', _init_basic_code)
 
-        click.echo("install extensions")
-        os.system("pip install -r requirement.txt")
-        click.echo("install ... done!")
-    else:
-        click.echo("install extensions")
-		# use sudo
-        os.system("sudo pip install -r requirement.txt")
-        click.echo("install ... done!🍺 ")
+    # create templates and static
+    templates_path = os.path.join(app_path, 'templates')
+    static_path = os.path.join(app_path, 'static')
+
+    logger.info("init flask project <%s> done! " % project_name)
 
 
 @click.command()
 @click.argument('project_name')
-def manage(project_name):
+def sqlinit(project_name):
     """
-    create manage.py to manage project
+    mana sqlinit <project_name>
     """
-    # 创建 manage.py 文件
-    # 调用 fill_file 函数
-    fill_file_w(project_name, 'manage.py', _management_py)
-    click.echo("manage... done! 🍺 ")
+
+    # the destination path
+    dst_path = os.path.join(os.getcwd(), project_name)
+
+    # dst path exist
+    if os.path.isdir(dst_path):
+        logger.warning("path: %s exist,\nplease change the project name\n \
+                and try again!" % dst_path)
+        return
+
+    # start init
+    logger.info("start init your flask project!")
+
+    # create dst path
+    _mkdir_p(dst_path)
+
+    # create project tree
+    os.chdir(dst_path)
+    # create files
+    init_code('manage.py', _manage_sql_code)
+    init_code('requirement.txt', _requirement_code)
+    init_code('config.py', _config_sql_code)
+
+    # create app/
+    app_path = os.path.join(dst_path, 'app')
+    _mkdir_p(app_path)
+
+    # create files
+    os.chdir(app_path)
+    init_code('models.py', _models_code)
+    init_code('__init__.py', _init_code)
+
+    # create main/
+    main_path = os.path.join(app_path, 'main')
+    _mkdir_p(main_path)
+
+    os.chdir(main_path)
+    # create files
+    init_code('views.py', _views_blueprint_code % ('main', 'main'))
+    init_code('forms.py', _forms_basic_code)
+    init_code('__init__.py', _init_blueprint_code % ('main', 'main'))
+
+    # create templates and static
+    templates_path = os.path.join(main_path, 'templates')
+    static_path = os.path.join(main_path, 'static')
+
+    logger.info("init flask project <%s> done! " % project_name)
 
 
-""":version 2.0"""
 @click.command()
-@click.argument('project_name')
 @click.argument('blueprint_name')
-@click.option('--prefix', default=False, help="the url_prefix of blueprint")
-def blue(project_name, blueprint_name, prefix):
+def blueprint(blueprint_name):
     """
-    create blueprint
+    mana blueprint <blueprint_name>
     """
-    # 创建蓝图
-    # :ex mana blue book
-    #     book = Blueprint('book', __name__, template_folder='templates', static_folder='static')
-    #     app.register_blueprint(book)
-    # :ex mana blue book --prefix="/book"
-    #     app.register_blueprint(book, url_prefix="/book")
-    # :ex mana blue book --subdomain="book"
-    #     app.register_blueprint(book, subdomain='book')
-    click.echo("create flask Blueprint obj %s" % blueprint_name)
-    # create blueprint folder
-    os.system("cd %s/app && mkdir %s" % (project_name, blueprint_name))
-    # create blueprint files
-    os.system("cd %s/app/%s && touch __init__.py views.py forms.py" % (project_name, blueprint_name))
-    # create Blueprint obj:: blueprint
-    fill_file_w(project_name+'/app/'+blueprint_name, '__init__.py', _blueprint_py % make_tuple(blueprint_name, 2))
-    # register blueprint
-    # blue命令可以注册多个蓝图
-    # 为了更灵活的处理蓝图的注册,蓝图注册不预填代码模版
-    # 而是直接插入代码片段,进行注册
-    #   :ex: "app.register_blueprint('%s')" % blueprint_name + _init_py
-    if prefix:
-        blue_code = "app.register_blueprint('%s', url_prefix='%s')\n" % (blueprint_name, prefix)
-    else:
-        blue_code = "app.register_blueprint('%s')\n" % blueprint_name
-    # app:__init__.py 在使用蓝图后，更多的是用于分发请求
-    # open:app::__init__.py 直接在蓝图注册区写入
-    fill_file_r(project_name, 'app/__init__.py', blue_code)
-    # ...done !
-    click.echo("blueprint... done!🍺 ")
+
+    # destination path
+    dst_path = os.path.join(os.getcwd(), blueprint_name)
+
+    # dst path exist
+    if os.path.isdir(dst_path):
+        logger.warning("path: %s exist,\nplease change the project name\n \
+                and try again!" % dst_path)
+        return
+
+    # create dst_path
+    _mkdir_p(dst_path)
+
+    # change dir
+    os.chdir(dst_path)
+    # create files
+    init_code('__init__.py', _init_blueprint_code % (blueprint_name, blueprint_name))
+    init_code('views.py', _views_blueprint_code % (blueprint_name, blueprint_name))
+    init_code('forms.py', _forms_basic_code)
+
+    # create templates
+    templates_path = os.path.join(dst_path, 'templates')
+    _mkdir_p(templates_path)
+    # create static
+    static_path = os.path.join(dst_path, 'static')
+    _mkdir_p(static_path)
+
+    # register auth in app
+    os.chdir(os.path.join(dst_path, '..'))
+    with open('__init__.py', 'r+') as f:
+        prev = pos = 0
+        while f.readline():
+            prev, pos = pos, f.tell()
+        f.seek(prev)
+        f.write(
+            '    from %s import %s\n    app.register_blueprint(%s, url_prefix="/%s")\n\n    return app'
+            % (
+                blueprint_name, blueprint_name,
+                blueprint_name, blueprint_name
+            )
+        )
+
+    logger.info("init flask blueprint <%s> done! " % blueprint_name)
 
 
-""":version 2.1"""
-@click.command()
-@click.argument('project_name')
-@click.option('--host')
-@click.option('--port', type=int)
-def deploy(project_name, host, port):
-    """deploy your flask application"""
-    click.echo("create wsgi file")
-    os.system("cd %s && touch wsgi.py" % project_name)
-    fill_file_w(project_name, 'wsgi.py', _wsgi_py % (host, port))
-
-    click.echo("deploy wsgi...done!🍺 ")
-
-
-""":version 2.3"""
-@click.command()
-def version():
-    """show the mana version you installed"""
-    click.echo("mana version: 2.6 🍺 ")
-
-
-@click.command()
-def home():
-    """go to the homepage of mana"""
-    os.system('python -m webbrowser -t "http://121.43.230.104:520/mana"')
+# """:version 2.1"""
+# @click.command()
+# @click.argument('project_name')
+# @click.option('--host')
+# @click.option('--port', type=int)
+# def deploy(project_name, host, port):
+#     """deploy your flask application"""
+#     click.echo("create wsgi file")
+#     os.system("cd %s && touch wsgi.py" % project_name)
+#     fill_file_w(project_name, 'wsgi.py', _wsgi_py % (host, port))
+# 
+#     click.echo("deploy wsgi...done!🍺 ")
+# 
+# 
+# """:version 2.3"""
+# @click.command()
+# def version():
+#     """show the mana version you installed"""
+#     click.echo("mana version: 2.6 🍺 ")
+# 
+# 
+# @click.command()
+# def home():
+#     """go to the homepage of mana"""
+#     os.system('python -m webbrowser -t "http://121.43.230.104:520/mana"')
 
 
 ###########################
 # mana command set
 cli.add_command(init)
-cli.add_command(install)
-cli.add_command(manage)
-cli.add_command(blue)
-cli.add_command(deploy)
-cli.add_command(version)
-cli.add_command(home)
+cli.add_command(sqlinit)
+cli.add_command(blueprint)
+# cli.add_command(deploy)
+# cli.add_command(version)
+# cli.add_command(home)
 ###########################

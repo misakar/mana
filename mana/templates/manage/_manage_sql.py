@@ -1,30 +1,26 @@
 # coding: utf-8
 
 """
-    _management.py
+    _manage_sql_code.py
 
-        management.py 代码模版预填文件
 """
 
-
-_management_py='''# coding: utf-8
+_manage_sql_code = '''# coding: utf-8
 
 import sys
+import os
 from flask.ext.script import Manager, Shell
 from flask.ext.migrate import Migrate, MigrateCommand
-from flask.ext.admin import Admin
-from flask.ext.admin.contrib.sqla import ModelView
-from app import app, db
-
+from app import db, create_app
 
 # 编码设置
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+app = create_app(os.environ.get('your-config') or 'default')
 
 manager = Manager(app)
 migrate = Migrate(app, db)
-admin = Admin(app, name="")
 
 
 def make_shell_context():
@@ -39,10 +35,6 @@ manager.add_command("shell", Shell(make_context=make_shell_context))
 manager.add_command('db', MigrateCommand)
 
 
-# 后台数据库管理界面
-# admin.add_view(ModelView([models], db.session))
-
-
 @manager.command
 def test():
     """运行测试"""
@@ -52,15 +44,6 @@ def test():
 
 
 if __name__ == '__main__':
-    app.debug = True
     manager.run()
-'''
 
-_manage_py = '''# coding: utf-8
-
-from app import app
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
 '''

@@ -5,6 +5,7 @@
 
 欢迎阅读mana中文文档
 ================================
+.. image:: http://7xj431.com1.z0.glb.clouddn.com/images.jpeg
 ::
 
     mana: the missing startapp command for Flask
@@ -18,7 +19,7 @@ mana**
 让我们开始 **flask with mana** 吧!
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 5
 
 索引和目录
 ==================

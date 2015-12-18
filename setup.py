@@ -4,35 +4,42 @@
     mana
     ~~~~
 
-    happy generate flask project
+    the missing startapp command for Flask
+
 """
+
 from setuptools import setup, find_packages
+import mana
+
+
+# entry_points
+entry_points = {
+    'console_scripts':[
+        'mana = mana.mana:cli'
+    ]
+}
+
+
+# requires
+with open('requirement.txt') as f:
+    requires = [exts for exts in f.read().splitlines() if exts]
 
 
 setup(
     name='mana',
-    version='2.6',
+    version='2.71',
     packages=find_packages(),
     url='https://github.com/neo1218/mana',
     license='MIT',
     author='neo1218',
     author_email='neo1218@yeah.net',
-    description='happy generate flask project',
+    description='the missing startapp command for Flask',
     long_description=__doc__,
-    # if you would be using a package instead use packages instead
-    # of py_modules:
-    # packages=['flask_sqlite3'],
     zip_safe=False,
     include_package_data=True,
     platforms='any',
-    install_requires=[
-        'click'
-    ],
-    # /mana/mana.py/click::mana
-    entry_points='''
-        [console_scripts]
-        mana=mana.mana:cli
-    ''',
+    install_requires=requires,
+    entry_points=entry_points,
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
