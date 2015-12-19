@@ -27,7 +27,7 @@ with open('requirement.txt') as f:
 
 setup(
     name='mana',
-    version='2.71',
+    version='2.9',
     packages=find_packages(),
     url='https://github.com/neo1218/mana',
     license='MIT',
