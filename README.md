@@ -2,7 +2,6 @@ mana
 ====
 
     the missing startapp command for Flask
-             pip install mana
 
 ![mana](http://7xj431.com1.z0.glb.clouddn.com/mana3.gif)
 
@@ -12,6 +11,10 @@ YouKu: http://v.youku.com/v_show/id_XMTQxNzI0MjA3Mg==.html <br/>
 YouTuBe:
 
 ![mana](https://raw.githubusercontent.com/neo1218/mana/master/artwork/images-2.jpeg)
+
+## install mana
+
+    $ pip install mana
 
 ## mana init <project_name>
 :example:
