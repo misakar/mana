@@ -13,7 +13,7 @@ Usage:
     mana blueprint <blueprint_name>
 
     mana deploy <project_name>
-    \__ IP:
+    \__ Host IP:
     \__ Port:
 
 Options:
@@ -21,7 +21,6 @@ Options:
     --help:     help information
     --version:  show version
     --home:     link to the doc page
-
 """
 
 import sys
@@ -215,39 +214,37 @@ def blueprint(blueprint_name):
     logger.info("init flask blueprint <%s> done! " % blueprint_name)
 
 
-# """:version 2.1"""
 # @click.command()
 # @click.argument('project_name')
-# @click.option('--host')
-# @click.option('--port', type=int)
-# def deploy(project_name, host, port):
-#     """deploy your flask application"""
-#     click.echo("create wsgi file")
-#     os.system("cd %s && touch wsgi.py" % project_name)
-#     fill_file_w(project_name, 'wsgi.py', _wsgi_py % (host, port))
-# 
-#     click.echo("deploy wsgi...done!🍺 ")
-# 
-# 
-# """:version 2.3"""
-# @click.command()
-# def version():
-#     """show the mana version you installed"""
-#     click.echo("mana version: 2.6 🍺 ")
-# 
-# 
-# @click.command()
-# def home():
-#     """go to the homepage of mana"""
-#     os.system('python -m webbrowser -t "http://121.43.230.104:520/mana"')
+# def deploy(project_name):
+#     """
+#     mana deploy <project_name>
+#     """
+#
+#     host_ip = click.prompt('\__ Host IP: ')
+#     port = click.prompt('\__ Port: ', type=int)
+#
+#     logger.info('start deploy your flask project !')
+#     init_code('wsgi.py')
 
 
-###########################
+@click.command()
+def version():
+    """mana version"""
+    click.echo("mana version: 2.9 🍺 ")
+
+
+@click.command()
+def home():
+    """mana homepage"""
+    os.system('python -m webbrowser -t "http://121.43.230.104:520/mana"')
+
+
 # mana command set
+# ^o^ --> 0v0 --> {O.O}
 cli.add_command(init)
 cli.add_command(sqlinit)
 cli.add_command(blueprint)
-# cli.add_command(deploy)
-# cli.add_command(version)
-# cli.add_command(home)
-###########################
+li.add_command(version)
+cli.add_command(home)
+# ^o^ <-- 0v0 <-- {O.O}
