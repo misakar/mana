@@ -2,6 +2,7 @@ mana
 ====
 
     the missing startapp command for Flask
+             pip install mana
 
 ![mana](http://7xj431.com1.z0.glb.clouddn.com/mana3.gif)
 
@@ -71,3 +72,8 @@ sql database uri: <br/>
 :result: <br/>
 ![mana blueprint](http://7xj431.com1.z0.glb.clouddn.com/mana_blueprint) <br/>
 and auth blueprint is automatically registed in app/--init--.py
+
+## powered by click
+click: https://github.com/mitsuhiko/click
+
+## well, mana still in developement, and looking forward to your help
