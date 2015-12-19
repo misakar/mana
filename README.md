@@ -31,7 +31,7 @@ requirement.txt 中了，所以你只要:
 
     $ python manage.py runserver
 
-访问 http://127.0.0.1:5000/test，mana会告诉你一切正常!<br/>
+访问 http://127.0.0.1:5000/test/ mana会告诉你一切正常!<br/>
 
 
 ## mana sqlinit {project_name}::构建含sql数据库的项目
