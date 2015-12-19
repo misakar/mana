@@ -55,6 +55,7 @@ and data-dev.sqlite is your database file name <br/>
 if you want <strong>change database</strong>, just modify the
 SQLALCHEMY_DATABASE_URI in config file(config.py), here is a list of
 sql database uri: <br/>
+
 | database | uri |
 | ------------- |-------------|
 | postgres |postgresql://scott:tiger@localhost/mydatabase|
