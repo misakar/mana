@@ -55,12 +55,12 @@ and data-dev.sqlite is your database file name <br/>
 if you want <strong>change database</strong>, just modify the
 SQLALCHEMY_DATABASE_URI in config file(config.py), here is a list of
 sql database uri: <br/>
-| Database      | URI           |
-| ------------- |:-------------:|
-| Postgres      |postgresql://scott:tiger@localhost/mydatabase|
-| MySql         |mysql://scott:tiger@localhost/mydatabase     |
-| Oracle        |oracle://scott:tiger@127.0.0.1:1521/sidname  |
-| SQLite        |sqlite:////absolute/path/to/foo.db           |
+| database | uri |
+| ------------- |-------------|
+| postgres |postgresql://scott:tiger@localhost/mydatabase|
+| mysql |mysql://scott:tiger@localhost/mydatabase|
+| oracle |oracle://scott:tiger@127.0.0.1:1521/sidname|
+| sqlite |sqlite:////absolute/path/to/foo.db|
 
 ## mana blueprint <blueprint_name>
 :example:
