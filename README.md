@@ -12,8 +12,15 @@ YouKu[广告很烦人]: http://v.youku.com/v_show/id_XMTQxNzI0MjA3Mg==.html <br/
 ![mana](https://raw.githubusercontent.com/neo1218/mana/master/artwork/images-2.jpeg)
 
 ## 安装 mana
+#### 1. pip 安装
 
     $ pip install mana
+
+#### 2. 源码安装
+
+    $ git clone https://github.com/neo1218/mana
+    $ cd mana
+    $ sudo pip install .
 
 ## mana init {project_name}::构建基本项目
 
