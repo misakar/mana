@@ -245,6 +245,6 @@ def home():
 cli.add_command(init)
 cli.add_command(sqlinit)
 cli.add_command(blueprint)
-li.add_command(version)
+cli.add_command(version)
 cli.add_command(home)
 # ^o^ <-- 0v0 <-- {O.O}
