@@ -7,7 +7,7 @@ mana
 
 ## 更多mana操作请看视频(不是很清楚啦)
 
-YouKu: http://v.youku.com/v_show/id_XMTQxNzI0MjA3Mg==.html <br/>
+YouKu[广告很烦人]: http://v.youku.com/v_show/id_XMTQxNzI0MjA3Mg==.html <br/>
 
 ![mana](https://raw.githubusercontent.com/neo1218/mana/master/artwork/images-2.jpeg)
 
