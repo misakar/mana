@@ -3,7 +3,7 @@ mana
 
     the missing startapp command for Flask
 
-![mana](http://7xj431.com1.z0.glb.clouddn.com/mana3.gif)
+![mana](http://7xj431.com1.z0.glb.clouddn.com/manahaha.gif)
 
 ## 更多mana操作请看视频(不是很清楚啦)
 
