@@ -81,3 +81,12 @@ mana blueprint 会自动帮你创建蓝图，并把蓝图注册在app/--init--.p
 click: https://github.com/mitsuhiko/click
 
 ## flask with mana
+mana
+的灵感来源于django的startapp命令。的确flask不是很适合开发大型项目，但是flask基于一个超级强大的库werkzeug，这使得用
+flask写项目在某些方面的体验是比django好的(比如django需要正则写url，flask用route装饰器就可以了)。所以我希望通过mana，
+既可以让我们体验flask的强大，又能方便、快速的构建项目和管理数据库。<br/>
+但是，现在的mana还很小，功能还很少。目前只是可以快速的构建项目和数据库。下一步计划像django-admin一样自带管理后台，这样
+操作数据库的时候就会方便很多!<br/>
+我的想法就是希望 flask with mana 可以做到比django强大(😄
+)，但是flask还是flask，他的灵魂werkzeug 和 jinja 是不会变的!!!!!
+
