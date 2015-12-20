@@ -73,6 +73,33 @@ SQLALCHEMY_DATABASE_URI 配置项，下面是常用数据库的uri列表:
 sqlinit
 构建的配置文件(config.py)独立出3种配置环境(开发、测试、生产)，分别对应着三个类，并从基类中继承共同的配置
 
+### 关于manage.py
+manage.py 使用 flask-script,flask-migrate 对flask项目进行管理
+
+|命令|功能|
+|------|-------|
+|python manage.py runserver|运行flask项目|
+|python manage.py db init|创建数据库迁移目录|
+|python manage.py db migrate -m ""|进行数据库迁移|
+|python manage.py db upgrade|依据迁移更新数据库|
+|python manage.py test|运行测试目录test|
+
+可以在manage.py的 make_shell_context() 中写入相关的类,这样就可以在 python
+manage.py shell 中直接使用。比如:
+
+    from app.models import User
+    def make_shell_context():
+        return dict(
+            app = app,
+            db = db,
+            User = User
+        )
+
+运行:
+
+    $ python manage.py shell
+    >> User
+    app.models.User
 
 ## mana blueprint {blueprint_name}
 
