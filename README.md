@@ -48,8 +48,8 @@ requirement.txt 中了，所以你只要:
 :result:
 ![mana sqlinit](http://7xj431.com1.z0.glb.clouddn.com/mana_sqlinit)<br/>
 同样，你需要安装flask扩展。<br/>
-sqlinit 构建的项目采用了flask工厂函数来创建flask app，使用蓝图来组织flask
-project，mana提供了blueprint命令可以自动帮你创建和注册flask蓝图。<br/>
+sqlinit 构建的项目使用蓝图来组织flask
+project，main为主蓝图, mana提供了blueprint命令可以自动帮你创建和注册flask蓝图。<br/>
 
 现在，你可以创建、迁移、更新你的数据库了(默认是sqlite数据库)
 
