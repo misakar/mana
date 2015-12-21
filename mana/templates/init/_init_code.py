@@ -7,24 +7,16 @@ from flask_sqlalchemy import SQLAlchemy
 from config import config
 
 
-db = SQLAlchemy()
+app = Flask(__name__)
+app.config.from_object(config['default'])
+config['default'].init_app(app)
 
 
-def create_app(config_name):
+db = SQLAlchemy(app)
 
-    # create flask app
-    app = Flask(__name__)
 
-    # import config
-    app.config.from_object(config[config_name])
-    config[config_name].init_app(app)
+# register blueprint
+from main import main
+app.register_blueprint(main, url_prefix='/')
 
-    # init flask ext with app
-    db.init_app(app)
-
-    # regist your blueprint here
-    from main import main
-    app.register_blueprint(main, url_prefix='/main')
-
-    return app
 '''

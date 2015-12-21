@@ -146,19 +146,21 @@ def sqlinit(project_name):
     init_code('models.py', _models_code)
     init_code('__init__.py', _init_code)
 
-    # create main/
+    # create main blueprint
     main_path = os.path.join(app_path, 'main')
     _mkdir_p(main_path)
 
+    # create main files
     os.chdir(main_path)
-    # create files
+    init_code('__init__.py', _init_blueprint_code % ('main', 'main'))
     init_code('views.py', _views_blueprint_code % ('main', 'main'))
     init_code('forms.py', _forms_basic_code)
-    init_code('__init__.py', _init_blueprint_code % ('main', 'main'))
 
     # create templates and static
     templates_path = os.path.join(main_path, 'templates')
     static_path = os.path.join(main_path, 'static')
+    _mkdir_p(templates_path)
+    _mkdir_p(static_path)
 
     logger.info("init flask project <%s> done! " % project_name)
 
@@ -204,7 +206,7 @@ def blueprint(blueprint_name):
             prev, pos = pos, f.tell()
         f.seek(prev)
         f.write(
-            '    from %s import %s\n    app.register_blueprint(%s, url_prefix="/%s")\n\n    return app'
+            '\nfrom %s import %s\napp.register_blueprint(%s, url_prefix="/%s")\n'
             % (
                 blueprint_name, blueprint_name,
                 blueprint_name, blueprint_name
@@ -234,17 +236,10 @@ def version():
     click.echo("mana version: 2.9 🍺 ")
 
 
-@click.command()
-def home():
-    """mana homepage"""
-    os.system('python -m webbrowser -t "http://121.43.230.104:520/mana"')
-
-
 # mana command set
 # ^o^ --> 0v0 --> {O.O}
 cli.add_command(init)
 cli.add_command(sqlinit)
 cli.add_command(blueprint)
 cli.add_command(version)
-cli.add_command(home)
 # ^o^ <-- 0v0 <-- {O.O}

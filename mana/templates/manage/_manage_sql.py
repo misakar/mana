@@ -11,13 +11,12 @@ import sys
 import os
 from flask.ext.script import Manager, Shell
 from flask.ext.migrate import Migrate, MigrateCommand
-from app import db, create_app
+from app import db, app
 
 # 编码设置
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-app = create_app(os.environ.get('your-config') or 'default')
 
 manager = Manager(app)
 migrate = Migrate(app, db)
