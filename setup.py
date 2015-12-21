@@ -21,8 +21,8 @@ entry_points = {
 
 
 # requires
-with open('requirement.txt') as f:
-    requires = [exts for exts in f.read().splitlines() if exts]
+# with open('requirement.txt') as f:
+#     requires = [exts for exts in f.read().splitlines() if exts]
 
 
 setup(
@@ -38,7 +38,9 @@ setup(
     zip_safe=False,
     include_package_data=True,
     platforms='any',
-    install_requires=requires,
+    install_requires=[
+        'click',
+    ],
     entry_points=entry_points,
     classifiers=[
         'Environment :: Web Environment',
