@@ -3,7 +3,8 @@ mana init {project_name}
 
 ## Command
 
-    $ mana init <project_name>
+    $ mana init project_name
+    $ pip install -r requirement.txt
 
 ## Result
 ![mana init](http://7xj431.com1.z0.glb.clouddn.com/mana_init_result) <br/>
