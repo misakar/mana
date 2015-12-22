@@ -1,9 +1,10 @@
 # coding: utf-8
-
-from flask import render_template
 from . import app
+from flask import render_template
 
 
-@app.route("/mana")
-def mana():
-    return render_template("Mana.html")
+# test views
+@app.route('/test/')
+def test():
+    return "<h1>just tell you everything is ok!</h1>"
+

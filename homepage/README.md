@@ -4,4 +4,3 @@
 
     this homepage use mana
     $ mana init mana_home_page
-    $ mana deploy mana_home_page --host=121.43.230.104 --port=520

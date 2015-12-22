@@ -12,10 +12,6 @@ Usage:
 
     mana blueprint <blueprint_name>
 
-    mana deploy <project_name>
-    \__ Host IP:
-    \__ Port:
-
 Options:
 
     --help:     help information
@@ -104,6 +100,17 @@ def init(project_name):
     # create templates and static
     templates_path = os.path.join(app_path, 'templates')
     static_path = os.path.join(app_path, 'static')
+    _mkdir_p(templates_path)
+    _mkdir_p(static_path)
+
+    # create {img, css, js}
+    os.chdir(static_path)
+    img_path = os.path.join(static_path, 'img')
+    css_path = os.path.join(static_path, 'css')
+    js_path = os.path.join(static_path, 'js')
+    _mkdir_p(img_path)
+    _mkdir_p(css_path)
+    _mkdir_p(js_path)
 
     logger.info("init flask project <%s> done! " % project_name)
 
@@ -146,6 +153,21 @@ def sqlinit(project_name):
     init_code('models.py', _models_code)
     init_code('__init__.py', _init_code)
 
+    # create templates and static
+    templates_path = os.path.join(app_path, 'templates')
+    static_path = os.path.join(app_path, 'static')
+    _mkdir_p(templates_path)
+    _mkdir_p(static_path)
+
+    # create {img, css, js}
+    os.chdir(static_path)
+    img_path = os.path.join(static_path, 'img')
+    css_path = os.path.join(static_path, 'css')
+    js_path = os.path.join(static_path, 'js')
+    _mkdir_p(img_path)
+    _mkdir_p(css_path)
+    _mkdir_p(js_path)
+
     # create main blueprint
     main_path = os.path.join(app_path, 'main')
     _mkdir_p(main_path)
@@ -156,11 +178,10 @@ def sqlinit(project_name):
     init_code('views.py', _views_blueprint_code % ('main', 'main'))
     init_code('forms.py', _forms_basic_code)
 
-    # create templates and static
-    templates_path = os.path.join(main_path, 'templates')
-    static_path = os.path.join(main_path, 'static')
-    _mkdir_p(templates_path)
-    _mkdir_p(static_path)
+    # main blueprint templates
+    os.chdir(templates_path)
+    main_templates_path = os.path.join(templates_path, 'main')
+    _mkdir_p(main_templates_path)
 
     logger.info("init flask project <%s> done! " % project_name)
 
@@ -191,13 +212,6 @@ def blueprint(blueprint_name):
     init_code('views.py', _views_blueprint_code % (blueprint_name, blueprint_name))
     init_code('forms.py', _forms_basic_code)
 
-    # create templates
-    templates_path = os.path.join(dst_path, 'templates')
-    _mkdir_p(templates_path)
-    # create static
-    static_path = os.path.join(dst_path, 'static')
-    _mkdir_p(static_path)
-
     # register auth in app
     os.chdir(os.path.join(dst_path, '..'))
     with open('__init__.py', 'r+') as f:
@@ -213,21 +227,13 @@ def blueprint(blueprint_name):
             )
         )
 
+    # create blueprint templates
+    templates_path = os.path.join(os.getcwd(), 'templates')
+    os.chdir(templates_path)
+    blueprint_templates_path = os.path.join(templates_path, blueprint_name)
+    _mkdir_p(blueprint_templates_path)
+
     logger.info("init flask blueprint <%s> done! " % blueprint_name)
-
-
-# @click.command()
-# @click.argument('project_name')
-# def deploy(project_name):
-#     """
-#     mana deploy <project_name>
-#     """
-#
-#     host_ip = click.prompt('\__ Host IP: ')
-#     port = click.prompt('\__ Port: ', type=int)
-#
-#     logger.info('start deploy your flask project !')
-#     init_code('wsgi.py')
 
 
 @click.command()
