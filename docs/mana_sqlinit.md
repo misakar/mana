@@ -21,6 +21,7 @@ to run your project.
 
 ### create database
 you can use manage.py to create and manage your database<br/>
+
 1. create migration
 
     $ python manage.py db init
