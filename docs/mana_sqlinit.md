@@ -29,7 +29,7 @@ you can use manage.py to create and manage your database<br/>
 
     $ python manage.py db migrate -m "init"
 
-after migrate, you can see the data-dev.sqlite file is your database file <br/>
+    after migrate, you can see the data-dev.sqlite file is your database file
 
 3. upgrade database
 
