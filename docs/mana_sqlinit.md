@@ -20,7 +20,7 @@ to run your project.
     is sqlite3) and use flask blueprint to organize your project.
 
 ### create database
-you can use manage.py to create and manage your database
+you can use manage.py to create and manage your database<br/>
 1. create migration
 
     $ python manage.py db init
@@ -29,7 +29,7 @@ you can use manage.py to create and manage your database
 
     $ python manage.py db migrate -m "init"
 
-after migrate, you can see the data-dev.sqlite file is your database file
+after migrate, you can see the data-dev.sqlite file is your database file <br/>
 
 3. upgrade database
 
