@@ -101,7 +101,7 @@ manage.py shell 中直接使用。比如:
     >> User
     app.models.User
 
-## mana blueprint {blueprint_name}
+## mana blueprint {blueprint_name}::自动注册蓝图
 
     $ cd sql_project
     $ cd app
