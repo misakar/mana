@@ -21,7 +21,7 @@ project.
 
 ## Mana command detail
 1. mana init {project_name}
-    * doc: writing..
+    * doc: https://github.com/neo1218/mana/blob/master/docs/mana_init.md
 2. mana sqlinit {project_name}
     * doc: writing..
 3. mana blueprint {blueprint_name}
