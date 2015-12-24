@@ -240,7 +240,7 @@ def blueprint(blueprint_name):
 @click.command()
 def version():
     """mana version"""
-    click.echo("mana version: 3.2 \/ ")
+    click.echo("mana version: 3.3 \/ ")
 
 
 # mana command set
