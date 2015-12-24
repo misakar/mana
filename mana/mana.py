@@ -220,7 +220,7 @@ def blueprint(blueprint_name):
             prev, pos = pos, f.tell()
         f.seek(prev)
         f.write(
-            '\nfrom %s import %s\napp.register_blueprint(%s, url_prefix="/%s")\n'
+            '\nfrom %s import %s\napp.register_blueprint(%s, url_prefix="/%s")\n\n'
             % (
                 blueprint_name, blueprint_name,
                 blueprint_name, blueprint_name
