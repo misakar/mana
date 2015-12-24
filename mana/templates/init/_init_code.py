@@ -17,6 +17,6 @@ db = SQLAlchemy(app)
 
 # register blueprint
 from main import main
-app.register_blueprint(main, url_prefix='/')
+app.register_blueprint(main, url_prefix='/main')
 
 '''

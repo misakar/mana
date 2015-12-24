@@ -11,6 +11,5 @@ from flask import Blueprint
     static_folder = 'static'
 )
 
-from . import views, forms # --> prev
-# --> pos
+from . import views, forms
 '''
