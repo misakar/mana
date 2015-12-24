@@ -1,4 +1,5 @@
 # coding: utf-8
+
 """
 mana
 ~~~~
@@ -14,9 +15,9 @@ Usage:
 
 Options:
 
-    --help:     help information
-    --version:  show version
-    --home:     link to the doc page
+    mana --help:    help information
+    mana version:   show version
+
 """
 
 import sys

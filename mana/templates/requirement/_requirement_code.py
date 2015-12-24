@@ -12,5 +12,4 @@ flask-wtf
 flask-sqlalchemy
 flask-login
 flask-migrate
-flask-bootstrap
 '''
