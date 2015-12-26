@@ -5,8 +5,7 @@ the missing startapp command for Flask <br/>
 ![mana](http://7xj431.com1.z0.glb.clouddn.com/manamana2.gif)
 
 ## What is mana
-mana is a startapp command help flask developer fast start and manage their
-project.
+mana is a startapp command for fast build and manage your flask project.
 
 ## Install mana
 #### 1. install by pip
