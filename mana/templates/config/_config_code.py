@@ -17,6 +17,8 @@ class Config:
     SSL_DISABLE = False
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_RECORD_QUERIES = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+
     @staticmethod
     def init_app(app):
         pass
