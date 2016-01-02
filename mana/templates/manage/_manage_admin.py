@@ -48,8 +48,9 @@ def test():
 def admin():
     """添加管理员用户"""
     from getpass import getpass
-    username = raw_input("\_admin username ")
-    password = getpass("\_admin password ")
+    username = raw_input("\_admin username: ")
+    email = raw_input("\_admin email: ")
+    password = getpass("\_admin password: ")
     u = User(
         username = username,
         password = password,
