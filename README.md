@@ -1,4 +1,4 @@
-[正在重构...:更加简单,方便] <br/>
+[正在重构...:即将更加强大] <br/>
 mana
 ====
 the missing startapp command for Flask <br/>
