@@ -334,10 +334,10 @@ def version():
 
 
 # mana command set
-# ^o^ --> 0v0 --> {O.O}
+# flask 大法好~flask 大法好
 cli.add_command(init)
 cli.add_command(sqlinit)
 cli.add_command(blueprint)
 cli.add_command(startproject)
 cli.add_command(version)
-# ^o^ <-- 0v0 <-- {O.O}
+# flask 大法好~flask 大法好
