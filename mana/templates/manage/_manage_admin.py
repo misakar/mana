@@ -52,6 +52,7 @@ def admin():
     email = raw_input("\_admin email: ")
     password = getpass("\_admin password: ")
     u = User(
+        email = email,
         username = username,
         password = password,
         role_id = 2

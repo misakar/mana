@@ -5,10 +5,13 @@
 """
 
 _models_admin_code = '''# coding: utf-8
+
 from . import db
+# well, I use werkzeug security
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, AnonymousUserMixin, current_user
-from . import  login_manager
+from . import  login_manager, flask_bcrypt
+from wtforms.validators import Email
 
 
 class Permission:
@@ -65,21 +68,13 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(164), unique=True, index=True)
-    email = db.Column(db.String(164), index=True)
+    email = db.Column(db.String(164), info={'validator' : Email()})
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
-    password_hash = db.Column(db.String(128))
+    password = db.Column(db.String(164))
 
-    @property
-    def password(self):
-        raise AttributeError('password is not a readable attribute')
+    def __repr__(self):
+        return "<User %r>" % self.username
 
-    @password.setter
-    def password(self, password):
-        self.password_hash = generate_password_hash(password)
-
-    def verify_password(self, password):
-        return check_password_hash(self.password_hash, password)
-
-    # writing your models here
+# writing your models here
 
 '''

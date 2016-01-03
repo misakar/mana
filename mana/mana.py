@@ -42,6 +42,7 @@ from templates.forms import _forms_basic_code
 from templates.init import _init_basic_code, _init_code, _init_blueprint_code, _init_admin_code
 from templates.config import _config_sql_code
 from templates.models import _models_code, _models_admin_code
+from templates.admin import _admin_views_code, _admin_forms_code, _admin_serializers_code
 
 # logging
 import logging
@@ -306,6 +307,22 @@ def startproject(project_name):
     os.chdir(templates_path)
     main_templates_path = os.path.join(templates_path, 'main')
     _mkdir_p(main_templates_path)
+
+    # create admin blueprint for admin site
+    admin_path = os.path.join(app_path, 'admin')
+    _mkdir_p(admin_path)
+
+    # create admin files
+    os.chdir(admin_path)
+    init_code('__init__.py', _init_blueprint_code % ('admin', 'admin'))
+    init_code('forms.py', _admin_forms_code)
+    init_code('views.py', _admin_views_code)
+    init_code('serializers.py', _admin_serializers_code)
+
+    # admin blueprint templates
+    os.chdir(templates_path)
+    admin_templates_path = os.path.join(templates_path, 'admin')
+    _mkdir_p(admin_templates_path)
 
     logger.info("init flask project <%s> done! " % project_name)
 
