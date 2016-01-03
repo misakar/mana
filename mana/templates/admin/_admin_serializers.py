@@ -7,6 +7,6 @@ from marshmallow import fields, Serializer
 
 class UserSerializer(Serializer):
     class Meta:
-        fields = ("id", "email", "username", "role")
+        fields = ("id", "email", "username", "role_id")
 
 '''
