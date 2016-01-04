@@ -227,7 +227,7 @@ def startproject(project_name):
     _mkdir_p(js_path)
 
     # create css files
-    os.chdir(static_path)
+    os.chdir(css_path)
     init_code('sign.css', _auth_login_css_code)
 
     # create main blueprint
@@ -289,7 +289,7 @@ def startproject(project_name):
 @click.command()
 def version():
     """mana version"""
-    click.echo("mana version: 3.3 \/ ")
+    click.echo("mana version: 3.8 \/ ")
 
 
 # mana command set
