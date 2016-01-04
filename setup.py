@@ -4,7 +4,7 @@
     mana
     ~~~~
 
-    the missing startapp command for Flask
+    the missing startproject command for Flask
 
 """
 
@@ -20,20 +20,15 @@ entry_points = {
 }
 
 
-# requires
-# with open('requirement.txt') as f:
-#     requires = [exts for exts in f.read().splitlines() if exts]
-
-
 setup(
     name='mana',
-    version='3.66',
+    version='3.69',
     packages=find_packages(),
     url='https://github.com/neo1218/mana',
     license='MIT',
     author='neo1218',
     author_email='neo1218@yeah.net',
-    description='the missing startapp command for Flask',
+    description='the missing startproject command for Flask',
     long_description=__doc__,
     zip_safe=False,
     include_package_data=True,

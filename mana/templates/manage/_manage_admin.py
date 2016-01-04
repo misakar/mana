@@ -44,9 +44,10 @@ def test():
     tests = unittest.TestLoader().discover('test')
     unittest.TextTestRunner(verbosity=2).run(tests)
 
+
 @manager.command
 def admin():
-    """添加管理员用户"""
+    """add admin user"""
     from getpass import getpass
     username = raw_input("\_admin username: ")
     email = raw_input("\_admin email: ")
@@ -59,7 +60,7 @@ def admin():
     )
     db.session.add(u)
     db.session.commit()
-    print "admin user %s add in database" % username
+    print "<admin user %s add in database>" % username
 
 
 if __name__ == '__main__':

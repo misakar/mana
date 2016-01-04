@@ -10,7 +10,7 @@ from . import db
 # well, I use werkzeug security
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, AnonymousUserMixin, current_user
-from . import  login_manager, flask_bcrypt
+from . import  login_manager, bcrypt
 from wtforms.validators import Email
 
 
@@ -70,11 +70,36 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(164), unique=True, index=True)
     email = db.Column(db.String(164), info={'validator' : Email()})
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
-    password = db.Column(db.String(164))
+    password_hash = db.Column(db.String(164))
+
+    @property
+    def password(self):
+        raise AttributeError('password is not readable')
+
+    @password.setter
+    def password(self, password):
+        self.password_hash = bcrypt.generate_password_hash(password)
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(int(user_id))
+
+    def is_admin(self):
+        if self.role_id == 2:
+            return True
+        return False
 
     def __repr__(self):
         return "<User %r>" % self.username
 
-# writing your models here
+
+class AnonymousUser(AnonymousUserMixin):
+
+    def is_admin(self):
+        return False
+
+login_manager.anonymous_user = AnonymousUser
+
+# you can writing your models here
 
 '''
