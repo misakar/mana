@@ -46,7 +46,7 @@ from templates.init import _init_basic_code, _init_code, _init_blueprint_code, _
 from templates.config import _config_sql_code
 from templates.models import _models_code, _models_admin_code
 from templates.admin import _admin_views_code, _admin_index_html_code, _admin_logout_html_code
-from templates.auth import _auth_forms_code, _auth_views_code, _auth_login_html_code
+from templates.auth import _auth_forms_code, _auth_views_code, _auth_login_html_code, _auth_login_css_code
 
 # logging
 import logging
@@ -225,6 +225,10 @@ def startproject(project_name):
     _mkdir_p(img_path)
     _mkdir_p(css_path)
     _mkdir_p(js_path)
+
+    # create css files
+    os.chdir(static_path)
+    init_code('sign.css', _auth_login_css_code)
 
     # create main blueprint
     main_path = os.path.join(app_path, 'main')
