@@ -65,7 +65,7 @@ create user roles
     \_admin email:
     \_admin password:
 
-#### run myblog
+#### run the project
 now, you can run myblog:
 
     $ python manage.py runserver
