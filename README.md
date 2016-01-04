@@ -5,17 +5,6 @@ the missing startproject command for Flask <br/>
 # what is mana
 mana just like django startproject command, help you fast build and manage your flask project!
 
-# install mana
-#### 1. install by pip
-
-    $ pip install mana
-
-#### 2. install from source
-
-    $ git clone https://github.com/neo1218/mana
-    $ cd mana
-    $ sudo pip install .
-
 # mana command set
 ### => mana init (project_name)
 <strong>mana init</strong> command can fast build a tiny flask app, which structure is:<br/>
@@ -81,6 +70,17 @@ and the book blueprint is created and registed in <code>app/__init__.py</code>.
 
 ### => mana version
 show the version info: latest version: 3.8
+
+# install mana
+#### 1. install by pip
+
+    $ pip install mana
+
+#### 2. install from source
+
+    $ git clone https://github.com/neo1218/mana
+    $ cd mana
+    $ sudo pip install .
 
 # flask extensions used by mana
 ### management
