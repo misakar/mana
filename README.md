@@ -1,12 +1,9 @@
-[正在重构...:即将更加强大] <br/>
 mana
 ====
-the missing startapp command for Flask <br/>
-
-![mana](http://7xj431.com1.z0.glb.clouddn.com/manamana2.gif)
+the missing startproject command for Flask <br/>
 
 ## What is mana
-mana is a startapp command for fast build and manage your flask project.
+mana just like django startproject command, help you fast build and manage your flask project!
 
 ## Install mana
 #### 1. install by pip
@@ -19,12 +16,15 @@ mana is a startapp command for fast build and manage your flask project.
     $ cd mana
     $ sudo pip install .
 
-## Mana command detail
-1. mana init {project_name}
-    * doc: https://github.com/neo1218/mana/blob/master/docs/mana_init.md
-2. mana sqlinit {project_name}
-    * doc: https://github.com/neo1218/mana/blob/master/docs/mana_sqlinit.md
-3. mana blueprint {blueprint_name}
-    * doc: https://github.com/neo1218/mana/blob/master/docs/mana_blueprint.md
+## mana command set
+### mana init (project_name)
+![mana](http://7xj431.com1.z0.glb.clouddn.com/manamana2.gif) <br/>
 
-## Flask with mana
+<strong>mana init</strong> command can fast build a tiny flask app, which structure is:<br/>
+![mana init](http://7xj431.com1.z0.glb.clouddn.com/manainit) <br/>
+after init, you should install flask extensions(highly recommend use [virtualenv](http://flask.pocoo.org/docs/0.10/installation/#virtualenv)), just type <code>$ pip install -r requirement.txt</code> <br/>
+you can run your project by <code>$ python manage.py runserver</code> <br/>
+now, you can goto http://127.0.0.1:5000/test and check everything is ok :)
+
+### mana startproject (project_name)
+
