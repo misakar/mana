@@ -14,7 +14,7 @@ you can run your project by <code>$ python manage.py runserver</code> <br/>
 now, you can goto http://127.0.0.1:5000/test and check everything is ok :)
 
 ### => mana startproject (project_name)
-<strong>mana startproject</strong> command is powerful, it can help you build a sql database driven project, and provide a full status CRUD admin site.
+<strong>mana startproject</strong> command is powerful, it can help you build a sql database driven project, and provide a CRUD admin site.
 #### mana startproject (project_name)
 
     $ mana startproject myblog
