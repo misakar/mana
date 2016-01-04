@@ -19,8 +19,25 @@ now, you can goto http://127.0.0.1:5000/test and check everything is ok :)
 
     $ mana startproject myblog
 
-it create a flask project called myblog, and it structure is: <br/>
-![mana startproject](http://7xj431.com1.z0.glb.clouddn.com/manastartproject)<br/>
+it create a flask project called myblog, and it structure is:
+
+    myblog/ => requirement.txt
+               manage.py
+               config.py
+
+               app/ => __init__.py
+                       models.py
+                       templates/ => main/
+                                     auth/
+                                     admin/
+                       static/ => img/
+                                  css/
+                                  js/
+                       admin/
+                       auth/
+                       main/ => __init__.py
+                                forms.py
+                                views.py
 
 #### install flask extensions
 
