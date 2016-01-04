@@ -2,10 +2,10 @@ mana
 ==
 the missing startproject command for Flask <br/>
 
-# what is mana
+## what is mana
 mana just like django startproject command, help you fast build and manage your flask project!
 
-# mana command set
+## mana command set
 ### => mana init (project_name)
 <strong>mana init</strong> command can fast build a tiny flask app, which structure is:<br/>
 ![mana init](http://7xj431.com1.z0.glb.clouddn.com/manainit) <br/>
@@ -88,7 +88,7 @@ and the book blueprint is created and registed in <code>app/__init__.py</code>.
 ### => mana version
 show the version info: latest version: 3.8
 
-# install mana
+## install mana
 #### 1. install by pip
 
     $ pip install mana
@@ -99,7 +99,7 @@ show the version info: latest version: 3.8
     $ cd mana
     $ sudo pip install .
 
-# flask extensions used by mana
+## flask extensions used by mana
 ### management
 
 + Flask-Script
@@ -121,3 +121,6 @@ show the version info: latest version: 3.8
 ### admin
 
 + Flask-Admin
+
+## LICENSE
+MIT: see [LICENSE](https://github.com/neo1218/mana/blob/master/LICENSE) for more detail
