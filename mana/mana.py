@@ -283,15 +283,6 @@ def startproject(project_name):
 
 
 @click.command()
-@click.argument('model_name')
-def manage(model_name):
-    """
-    mana manage POST
-    """
-    pass
-
-
-@click.command()
 def version():
     """mana version"""
     click.echo("mana version: 3.3 \/ ")
