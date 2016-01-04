@@ -17,14 +17,14 @@ mana just like django startproject command, help you fast build and manage your 
     $ sudo pip install .
 
 # mana command set
-### mana init (project_name)
+### => mana init (project_name)
 <strong>mana init</strong> command can fast build a tiny flask app, which structure is:<br/>
 ![mana init](http://7xj431.com1.z0.glb.clouddn.com/manainit) <br/>
 after init, you should install flask extensions(highly recommend use [virtualenv](http://flask.pocoo.org/docs/0.10/installation/#virtualenv)), just type <code>$ pip install -r requirement.txt</code> <br/>
 you can run your project by <code>$ python manage.py runserver</code> <br/>
 now, you can goto http://127.0.0.1:5000/test and check everything is ok :)
 
-### mana startproject (project_name)
+### => mana startproject (project_name)
 <strong>mana startproject</strong> command is powerful, it can help you build a sql database driven project, and provide a full status CRUD admin site.
 #### mana startproject (project_name)
 
@@ -71,8 +71,15 @@ after login as an administrator, you can see the CRUD admin site: <br/>
 ![admin site](http://7xj431.com1.z0.glb.clouddn.com/manaadmin) <br/>
 ![admin site2](http://7xj431.com1.z0.glb.clouddn.com/manaadmin2)<br/>
 
+### => mana blueprint (blueprint_name)
+<strong>mana blueprint</strong> command can automatic create and
+register a flask blueprint, go to the app folder:
 
-### mana version
+    $ mana blueprint book
+
+and the book blueprint is created and registed in <code>app/__init__.py</code>.
+
+### => mana version
 show the version info: latest version: 3.8
 
 # flask extensions used by mana
