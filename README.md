@@ -1,4 +1,4 @@
-mana
+mana 🔮
 ==
 the missing startproject command for Flask <br/>
 
