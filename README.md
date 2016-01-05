@@ -64,11 +64,11 @@ now, you can run myblog:
     $ python manage.py runserver
 
 and goto http://127.0.0.1:5000/admin <br/>
-![admin login](http://7xj431.com1.z0.glb.clouddn.com/manalogin)<br/>
+![admin login](http://7xj431.com1.z0.glb.clouddn.com/manalogin2)<br/>
 
 after login as an administrator, you can see the CRUD admin site: <br/>
-![admin site](http://7xj431.com1.z0.glb.clouddn.com/manaadmin) <br/>
-![admin site2](http://7xj431.com1.z0.glb.clouddn.com/manaadmin2)<br/>
+![admin site](http://7xj431.com1.z0.glb.clouddn.com/manaadmin22) <br/>
+![admin site2](http://7xj431.com1.z0.glb.clouddn.com/manaadmin222)<br/>
 
 ### => mana blueprint (blueprint_name)
 <strong>mana blueprint</strong> command can automatic create and
@@ -86,7 +86,7 @@ you can run your project by <code>$ python manage.py runserver</code> <br/>
 now, you can goto http://127.0.0.1:5000/test and check everything is ok :)
 
 ### => mana version
-show the version info: latest version: 3.8
+show the version info: latest version: 3.9
 
 ## install mana
 #### 1. install by pip
