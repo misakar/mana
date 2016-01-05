@@ -12,9 +12,19 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from config import config
 
+
 app = Flask(__name__)
-app.config.from_object(config['default'])
-config['default'].init_app(app)
+"""
+config
+ -- 'default': DevelopmentConfig
+ -- 'develop': DevelopmentConfig
+ -- 'testing': TestingConfig
+ -- 'production': ProductionConfig
+    you can edit this in config.py
+"""
+config_name = 'default'
+app.config.from_object(config[config_name])
+config[config_name].init_app(app)
 
 
 db = SQLAlchemy(app)
@@ -28,7 +38,12 @@ bcrypt = Bcrypt(app)
 from admin import views
 
 
-# register blueprint
+"""
+blueprint
+you can register a <blueprint> by run:
+ -- mana blueprint <blueprint>
+under app folder
+"""
 from main import main
 app.register_blueprint(main, url_prefix='/main')
 

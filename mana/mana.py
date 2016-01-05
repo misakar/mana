@@ -28,11 +28,6 @@ Install:
 import sys
 import os
 
-# project root path
-project_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-if project_path not in sys.path:
-    sys.path.insert(0, project_path)
-
 # operators
 from operators import _mkdir_p
 from operators import init_code
@@ -42,7 +37,7 @@ from templates.manage import _manage_basic_code, _manage_admin_code
 from templates.requirement import _requirement_code, _requirement_admin_code
 from templates.views import _views_basic_code, _views_blueprint_code
 from templates.forms import _forms_basic_code
-from templates.init import _init_basic_code, _init_code, _init_blueprint_code, _init_admin_code
+from templates.init import _init_basic_code, _init_blueprint_code, _init_admin_code
 from templates.config import _config_sql_code
 from templates.models import _models_code, _models_admin_code
 from templates.admin import _admin_views_code, _admin_index_html_code, _admin_logout_html_code
