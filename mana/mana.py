@@ -191,7 +191,7 @@ def blueprint(blueprint_name):
     blueprint_templates_path = os.path.join(templates_path, blueprint_name)
     _mkdir_p(blueprint_templates_path)
 
-    logger.info("init flask blueprint <%s> done! " % blueprint_name)
+    logger.info("[Info]init flask blueprint <%s> done! " % blueprint_name)
 
 
 @click.command()
