@@ -52,6 +52,56 @@ logger.setLevel(DEBUG)
 logger.addHandler(StreamHandler())
 
 
+def warning_path_exist(path):
+    """
+    send warning msg if path exist
+    """
+    if os.path.isdir(path):
+        logger.warning("""[Warning]: %s exist
+        => please change the project name,
+        => and try again !
+        """ % path)
+
+
+def create_templates_static_files(app_path):
+    """
+    create templates and static
+    """
+    templates_path = os.path.join(app_path, 'templates')
+    static_path = os.path.join(app_path, 'static')
+    _mkdir_p(templates_path)
+    _mkdir_p(static_path)
+    # create {img, css, js}
+    os.chdir(static_path)
+    img_path = os.path.join(static_path, 'img')
+    css_path = os.path.join(static_path, 'css')
+    js_path = os.path.join(static_path, 'js')
+    _mkdir_p(img_path)
+    _mkdir_p(css_path)
+    _mkdir_p(js_path)
+
+    return css_path, templates_path
+
+
+def create_blueprint(app_path, blueprint, views_code, forms_code, templates_path):
+    """
+    create blueprint
+    """
+    blueprint_path = os.path.join(app_path, blueprint)
+    _mkdir_p(blueprint_path)
+    # create  blueprint files
+    os.chdir(blueprint_path)
+    init_code('__init__.py', _init_blueprint_code % (blueprint, blueprint))
+    init_code('views.py', views_code)
+    init_code('forms.py', forms_code)
+    # main blueprint templates
+    os.chdir(templates_path)
+    blueprint_templates_path = os.path.join(templates_path, blueprint)
+    _mkdir_p(blueprint_templates_path)
+
+    return blueprint_templates_path
+
+
 """use click:)"""
 import click
 
@@ -66,26 +116,21 @@ def cli():
 def init(project_name):
     """
     mana init <project_name>
-    """
+    -- build a tiny flask project
 
+    """
     # the destination path
     dst_path = os.path.join(os.getcwd(), project_name)
 
-    # dst path exist
-    if os.path.isdir(dst_path):
-        logger.warning("path: %s exist,\nplease change the project name\n \
-                and try again!" % dst_path)
-        return
+    warning_path_exist(dst_path)
 
     # start init
-    logger.info("start init your flask project!")
+    logger.info("[Info] start init your flask project!")
 
     # create dst path
     _mkdir_p(dst_path)
 
-    # create project tree
     os.chdir(dst_path)
-
     # create files
     init_code('manage.py', _manage_basic_code)
     init_code('requirement.txt', _requirement_code)
@@ -100,22 +145,9 @@ def init(project_name):
     init_code('forms.py', _forms_basic_code)
     init_code('__init__.py', _init_basic_code)
 
-    # create templates and static
-    templates_path = os.path.join(app_path, 'templates')
-    static_path = os.path.join(app_path, 'static')
-    _mkdir_p(templates_path)
-    _mkdir_p(static_path)
+    create_templates_static_files()
 
-    # create {img, css, js}
-    os.chdir(static_path)
-    img_path = os.path.join(static_path, 'img')
-    css_path = os.path.join(static_path, 'css')
-    js_path = os.path.join(static_path, 'js')
-    _mkdir_p(img_path)
-    _mkdir_p(css_path)
-    _mkdir_p(js_path)
-
-    logger.info("init flask project <%s> done! " % project_name)
+    logger.info("[Info] init flask project <%s> done! " % project_name)
 
 
 @click.command()
@@ -124,15 +156,9 @@ def blueprint(blueprint_name):
     """
     mana blueprint <blueprint_name>
     """
-
     # destination path
     dst_path = os.path.join(os.getcwd(), blueprint_name)
-
-    # dst path exist
-    if os.path.isdir(dst_path):
-        logger.warning("path: %s exist,\nplease change the project name\n \
-                and try again!" % dst_path)
-        return
+    warning_path_exist(dst_path)
 
     # create dst_path
     _mkdir_p(dst_path)
@@ -174,18 +200,12 @@ def startproject(project_name):
     """
     mana startproject <project_name>
     """
-
     # the destination path
     dst_path = os.path.join(os.getcwd(), project_name)
-
-    # dst path exist
-    if os.path.isdir(dst_path):
-        logger.warning("path: %s exist,\nplease change the project name\n \
-                and try again!" % dst_path)
-        return
+    warning_path_exist(dst_path)
 
     # start init
-    logger.info("start init your flask project!")
+    logger.info("[Info] start init your flask project!")
 
     # create dst path
     _mkdir_p(dst_path)
@@ -207,54 +227,28 @@ def startproject(project_name):
     init_code('__init__.py', _init_admin_code)
 
     # create templates and static
-    templates_path = os.path.join(app_path, 'templates')
-    static_path = os.path.join(app_path, 'static')
-    _mkdir_p(templates_path)
-    _mkdir_p(static_path)
-
-    # create {img, css, js}
-    os.chdir(static_path)
-    img_path = os.path.join(static_path, 'img')
-    css_path = os.path.join(static_path, 'css')
-    js_path = os.path.join(static_path, 'js')
-    _mkdir_p(img_path)
-    _mkdir_p(css_path)
-    _mkdir_p(js_path)
-
+    css_path, templates_path = create_templates_static_files(app_path)
     # create css files
     os.chdir(css_path)
     init_code('sign.css', _auth_login_css_code)
 
     # create main blueprint
-    main_path = os.path.join(app_path, 'main')
-    _mkdir_p(main_path)
-
-    # create main files
-    os.chdir(main_path)
-    init_code('__init__.py', _init_blueprint_code % ('main', 'main'))
-    init_code('views.py', _views_blueprint_code % ('main', 'main'))
-    init_code('forms.py', _forms_basic_code)
-
-    # main blueprint templates
-    os.chdir(templates_path)
-    main_templates_path = os.path.join(templates_path, 'main')
-    _mkdir_p(main_templates_path)
+    create_blueprint(
+        app_path,
+        'main',
+        _views_blueprint_code % ('main', 'main'),
+        _forms_basic_code,
+        templates_path
+    )
 
     # create auth blueprint
-    auth_path = os.path.join(app_path, 'auth')
-    _mkdir_p(auth_path)
-
-    # create auth files
-    os.chdir(auth_path)
-    init_code('__init__.py', _init_blueprint_code % ('auth', 'auth'))
-    init_code('views.py', _auth_views_code)
-    init_code('forms.py', _auth_forms_code)
-
-    # auth blueprint templates
-    os.chdir(templates_path)
-    auth_templates_path = os.path.join(templates_path, 'auth')
-    _mkdir_p(auth_templates_path)
-
+    auth_templates_path = create_blueprint(
+        app_path,
+        'auth',
+        _auth_views_code,
+        _auth_forms_code,
+        templates_path
+    )
     # create auth templates files
     os.chdir(auth_templates_path)
     init_code('login.html', _auth_login_html_code)
@@ -278,7 +272,7 @@ def startproject(project_name):
     init_code('index.html', _admin_index_html_code)
     init_code('logout.html', _admin_logout_html_code)
 
-    logger.info("init flask project <%s> done! " % project_name)
+    logger.info("[Info] init flask project <%s> done! " % project_name)
 
 
 @click.command()
