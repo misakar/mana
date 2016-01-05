@@ -48,7 +48,7 @@ _auth_login_html_code = '''
     <link href="/static/css/sign.css" rel="stylesheet">
     <div class="container">
       <form class="form-signin" method="post">
-        <h2 class="form-signin-heading">admin login</h2>
+        <h2 class="form-signin-heading" text-align=center>admin login</h2>
           {{ form.hidden_tag() }}
           {{ form.username(id="inputUsername", class="form-control", placeholder="Username") }}
           {{ form.password(id="inputPassword", class="form-control", placeholder="Password") }}

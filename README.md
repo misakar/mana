@@ -79,7 +79,7 @@ register a flask blueprint, go to the app folder:
 and the book blueprint is created and registed in <code>app/__init__.py</code>.
 
 ### => mana init (project_name)
-<strong>mana init</strong> command can fast build a tiny flask app, which structure is:<br/>
+<strong>mana init</strong> command can fast build a tiny flask app, which structure is:
 ![mana init](http://7xj431.com1.z0.glb.clouddn.com/manainit) <br/>
 after init, you should install flask extensions(highly recommend use [virtualenv](http://flask.pocoo.org/docs/0.10/installation/#virtualenv)), just type <code>$ pip install -r requirement.txt</code> <br/>
 you can run your project by <code>$ python manage.py runserver</code> <br/>
