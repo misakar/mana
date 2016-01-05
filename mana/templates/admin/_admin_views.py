@@ -5,6 +5,9 @@ _admin_views_code = '''# coding: utf-8
 """
     admin site
 
+    use: Flask-Admin
+    -- https://flask-admin.readthedocs.org/en/latest/
+
 """
 
 import flask_login as login
@@ -25,11 +28,16 @@ class MyAdminIndexView(admin.AdminIndexView):
         return redirect(url_for('auth.login'))
 
 
-admin = Admin(app, name="admin site", template_mode="bootstrap3",
+admin = Admin(
+    app,
+    name="admin site",
+    template_mode="bootstrap3",
     index_view=MyAdminIndexView(),
-    base_template='admin/logout.html')
+    base_template='admin/logout.html'
+)
 
 
+# sql models management
 from app.models import User
 admin.add_view(ModelView(User, db.session))
 

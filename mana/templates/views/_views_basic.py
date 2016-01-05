@@ -15,5 +15,7 @@ from flask import render_template
 def test():
     return "<h1>just tell you everything is ok!</h1>"
 
+# you can writing your views here
+
 '''
 

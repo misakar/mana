@@ -5,15 +5,21 @@
 """
 
 _models_admin_code = '''# coding: utf-8
+"""
+sql models
+
+    use: Flask-SQLAlchemy
+    -- http://flask-sqlalchemy.pocoo.org/2.1/
+
+"""
 
 from . import db
-# well, I use werkzeug security
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, AnonymousUserMixin, current_user
 from . import  login_manager, bcrypt
 from wtforms.validators import Email
 
-
+# permissions
 class Permission:
     """
     1. COMMENT: 0x01
@@ -25,6 +31,7 @@ class Permission:
     ADMINISTER = 0x04
 
 
+# user roles
 class Role(db.Model):
     """
     1. User: COMMENT
@@ -65,6 +72,7 @@ class Role(db.Model):
 
 
 class User(db.Model, UserMixin):
+    """user"""
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(164), unique=True, index=True)
@@ -94,12 +102,12 @@ class User(db.Model, UserMixin):
 
 
 class AnonymousUser(AnonymousUserMixin):
-
+    """ anonymous user """
     def is_admin(self):
         return False
 
 login_manager.anonymous_user = AnonymousUser
 
-# you can writing your models here
+# you can writing your models here:
 
 '''
