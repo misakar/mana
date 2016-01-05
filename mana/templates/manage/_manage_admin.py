@@ -6,6 +6,38 @@
 """
 
 _manage_admin_code = '''# coding: utf-8
+"""
+project management
+ -- database management
+    -- python manage.py db init: create migrations folder
+    -- python manage.py db migrate: database migrate
+    -- python manage.py db upgrate: upgrade database
+    -- python manage.py shell
+       >> Role.insert_roles() : create user roles
+
+ -- add administrator
+    -- python manage.py admin
+       \_admin username:
+       \_admin email:
+       \_admin password:
+
+ -- add users
+    -- python manage.py adduser
+       \_username:
+       \_password:
+       \_email:
+       \_[1:moderator 2:admin 3:user]:
+
+ -- run project
+    -- python manage.py runserver
+
+ -- shell environment
+    -- python manage.py shell
+
+ -- run your unit tests
+    -- python manage.py test
+
+"""
 
 import sys
 import os
@@ -39,7 +71,7 @@ manager.add_command('db', MigrateCommand)
 
 @manager.command
 def test():
-    """运行测试"""
+    """run your unit tests"""
     import unittest
     tests = unittest.TestLoader().discover('test')
     unittest.TextTestRunner(verbosity=2).run(tests)
@@ -47,7 +79,7 @@ def test():
 
 @manager.command
 def admin():
-    """add admin user"""
+    """add administrator"""
     from getpass import getpass
     username = raw_input("\_admin username: ")
     email = raw_input("\_admin email: ")
