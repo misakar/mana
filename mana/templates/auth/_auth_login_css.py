@@ -13,7 +13,9 @@ body {
   margin: 0 auto;
 }
 
-.form-signin .form-signin-heading,
+.form-signin .form-signin-heading{
+  text-align: center;
+}
 
 .form-signin .checkbox {
   margin-bottom: 10px;

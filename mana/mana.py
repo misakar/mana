@@ -289,7 +289,7 @@ def startproject(project_name):
 @click.command()
 def version():
     """mana version"""
-    click.echo("mana version: 3.8 \/ ")
+    click.echo("mana version: 3.9 \/ ")
 
 
 # mana command set
