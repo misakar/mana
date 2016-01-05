@@ -16,7 +16,6 @@ sql models
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, AnonymousUserMixin, current_user
-from . import  login_manager, bcrypt
 from wtforms.validators import Email
 
 # permissions
@@ -86,7 +85,10 @@ class User(db.Model, UserMixin):
 
     @password.setter
     def password(self, password):
-        self.password_hash = bcrypt.generate_password_hash(password)
+        self.password_hash = generate_password_hash(password)
+
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
     @login_manager.user_loader
     def load_user(user_id):

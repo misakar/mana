@@ -36,7 +36,7 @@ This commmand creates a flask project called myblog, and its structure looks lik
 #### install flask extensions
 
     $ virtualenv myblog_venv
-    $ source myblog_venv/bin/activate
+    $ source myblog_venv/bin/activate  (Windows: venv\Scripts\activate)
     $ pip install -r requirement.txt
 
 #### setup sql database
@@ -115,7 +115,6 @@ Show the version info: latest version: 4.0
 ### auth
 
 + Flask-Login
-+ Flask-Bcrypt
 
 ### form
 
