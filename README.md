@@ -6,13 +6,6 @@ the missing startproject command for Flask <br/>
 mana just like django startproject command, help you fast build and manage your flask project!
 
 ## mana command set
-### => mana init (project_name)
-<strong>mana init</strong> command can fast build a tiny flask app, which structure is:<br/>
-![mana init](http://7xj431.com1.z0.glb.clouddn.com/manainit) <br/>
-after init, you should install flask extensions(highly recommend use [virtualenv](http://flask.pocoo.org/docs/0.10/installation/#virtualenv)), just type <code>$ pip install -r requirement.txt</code> <br/>
-you can run your project by <code>$ python manage.py runserver</code> <br/>
-now, you can goto http://127.0.0.1:5000/test and check everything is ok :)
-
 ### => mana startproject (project_name)
 <strong>mana startproject</strong> command is powerful, it can help you build a sql database driven project, and provide a CRUD admin site.
 #### mana startproject (project_name)
@@ -84,6 +77,13 @@ register a flask blueprint, go to the app folder:
     $ mana blueprint book
 
 and the book blueprint is created and registed in <code>app/__init__.py</code>.
+
+### => mana init (project_name)
+<strong>mana init</strong> command can fast build a tiny flask app, which structure is:<br/>
+![mana init](http://7xj431.com1.z0.glb.clouddn.com/manainit) <br/>
+after init, you should install flask extensions(highly recommend use [virtualenv](http://flask.pocoo.org/docs/0.10/installation/#virtualenv)), just type <code>$ pip install -r requirement.txt</code> <br/>
+you can run your project by <code>$ python manage.py runserver</code> <br/>
+now, you can goto http://127.0.0.1:5000/test and check everything is ok :)
 
 ### => mana version
 show the version info: latest version: 3.8
