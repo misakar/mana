@@ -2,17 +2,17 @@ mana 🔮
 ==
 the missing startproject command for Flask <br/>
 
-## what is mana
-mana just like django startproject command, help you fast build and manage your flask project!
+## What is mana
+mana is just like Django startproject command, it helps you  build and manage your flask project swiftly with litte effort!
 
-## mana command set
+## mana command sets
 ### => mana startproject (project_name)
-<strong>mana startproject</strong> command is powerful, it can help you build a sql database driven project, and provide a CRUD admin site.
+**mana startproject** command is powerful, it can help you build a SQL database driven project, and provides a CRUD admin dashboard.
 #### mana startproject (project_name)
 
     $ mana startproject myblog
 
-it create a flask project called myblog, and it structure is:
+This commmand creates a flask project called myblog, and its structure looks like this:
 
     myblog/ => requirement.txt
                manage.py
@@ -39,13 +39,13 @@ it create a flask project called myblog, and it structure is:
     $ pip install -r requirement.txt
 
 #### setup sql database
-(default sql database is sqlite3, you can change it by edit config.py)
+(mana use sqlite3 by default, you can switch this by editing config.py)
 
     $ python manage.py db init
     $ python manage.py db migrate
     $ python manage.py db upgrade
 
-create user roles
+Create user roles
 
     $ python manage.py shell
     >> Role.insert_roles()
@@ -59,36 +59,37 @@ create user roles
     \_admin password:
 
 #### run the project
-now, you can run myblog:
+Now, you can run myblog:
 
     $ python manage.py runserver
 
-and goto http://127.0.0.1:5000/admin <br/>
+And open http://127.0.0.1:5000/admin in the browser<br/>
 ![admin login](http://7xj431.com1.z0.glb.clouddn.com/manalogin2)<br/>
 
-after login as an administrator, you can see the CRUD admin site: <br/>
+After log in as administrator, you can see the CRUD admin dashboard: <br/>
 ![admin site](http://7xj431.com1.z0.glb.clouddn.com/manaadmin22) <br/>
 ![admin site2](http://7xj431.com1.z0.glb.clouddn.com/manaadmin222)<br/>
 
 ### => mana blueprint (blueprint_name)
-<strong>mana blueprint</strong> command can automatic create and
+<strong>mana blueprint</strong> command can automatically create and
 register a flask blueprint, go to the app folder:
 
     $ mana blueprint book
 
-and the book blueprint is created and registed in <code>app/__init__.py</code>.
+And the book blueprint is created and registed in <code>app/__init__.py</code>.
 
 ### => mana init (project_name)
-<strong>mana init</strong> command can fast build a tiny flask app, which structure is:
+<strong>mana init</strong> command can build a minimal flask app instantly. The project structure looks like this:
+
 ![mana init](http://7xj431.com1.z0.glb.clouddn.com/manainit) <br/>
-after init, you should install flask extensions(highly recommend use [virtualenv](http://flask.pocoo.org/docs/0.10/installation/#virtualenv)), just type <code>$ pip install -r requirement.txt</code> <br/>
-you can run your project by <code>$ python manage.py runserver</code> <br/>
-now, you can goto http://127.0.0.1:5000/test and check everything is ok :)
+After init, you should install flask extensions(I highly recommend using [virtualenv](http://flask.pocoo.org/docs/0.10/installation/#virtualenv)), just type <code>$ pip install -r requirement.txt</code> <br/>
+And you can run your project using <code>$ python manage.py runserver</code> <br/>
+Now, you can goto http://127.0.0.1:5000/test and check if everything is ok :)
 
 ### => mana version
-show the version info: latest version: 3.9
+Show the version info: latest version: 3.9
 
-## install mana
+## Install mana
 #### 1. install by pip
 
     $ pip install mana
@@ -123,4 +124,4 @@ show the version info: latest version: 3.9
 + Flask-Admin
 
 ## LICENSE
-MIT: see [LICENSE](https://github.com/neo1218/mana/blob/master/LICENSE) for more detail
+MIT: check [LICENSE](https://github.com/neo1218/mana/blob/master/LICENSE) for more detail
