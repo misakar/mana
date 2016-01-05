@@ -126,3 +126,6 @@ Show the version info: latest version: 4.2
 
 ## LICENSE
 MIT: check [LICENSE](https://github.com/neo1218/mana/blob/master/LICENSE) for more detail
+
+## Powered by Click
+click: https://github.com/mitsuhiko/click
