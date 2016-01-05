@@ -29,9 +29,9 @@ This commmand creates a flask project called myblog, and its structure looks lik
                                   js/
                        admin/
                        auth/
-                       main/ => __init__.py
-                                forms.py
-                                views.py
+                       main/ => __init__.py --
+                                forms.py     |__ [writing your code here]
+                                views.py --- |
 
 #### install flask extensions
 
@@ -88,7 +88,8 @@ And you can run your project using <code>$ python manage.py runserver</code> <br
 Now, you can goto http://127.0.0.1:5000/test and check if everything is ok :)
 
 ### => mana version
-Show the version info: latest version: 3.9
+Show the version info: latest version: 4.0
+
 
 ## Install mana
 #### 1. install by pip
