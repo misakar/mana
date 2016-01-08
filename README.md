@@ -1,7 +1,11 @@
 mana 🔮
 ==
 ![manalogo](http://7xj431.com1.z0.glb.clouddn.com/manalogo)<br/>
-the missing startproject command for Flask <br/>
+[![PyPI](https://img.shields.io/pypi/dm/mana.svg)](https://pypi.python.org/pypi/mana)
+[![PyPI](https://img.shields.io/pypi/v/mana.svg)](https://pypi.python.org/pypi/mana)
+[![PyPI](https://img.shields.io/pypi/dd/mana.svg?style=flat-square)](https://pypi.python.org/pypi/mana)
+<br/>
+### the missing startproject command for Flask <br/>
 
 ## What is mana
 mana is just like Django startproject command, it helps you  build and manage your flask project swiftly with litte effort!
