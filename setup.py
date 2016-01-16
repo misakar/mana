@@ -22,7 +22,7 @@ entry_points = {
 
 setup(
     name='mana',
-    version='4.21',
+    version='4.3',
     packages=find_packages(),
     url='https://github.com/neo1218/mana',
     license='MIT',

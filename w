@@ -278,7 +278,7 @@ def startproject(project_name):
 @click.command()
 def version():
     """mana version"""
-    click.echo("mana version: 4.3 \/ ")
+    click.echo("mana version: 4.21 \/ ")
 
 
 # mana command set
