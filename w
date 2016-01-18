@@ -76,7 +76,7 @@ After log in as administrator, you can see the CRUD admin dashboard: <br/>
 ![admin site2](http://7xj431.com1.z0.glb.clouddn.com/manaadmin222)<br/>
 
 ### => mana admin (sql module_name)
-<strong>mana admin</strong> command can add sql modules into admin site<br/>
+<strong>mana admin</strong> command can add sql module in admin site
 
 ### => mana blueprint (blueprint_name)
 <strong>mana blueprint</strong> command can automatically create and
@@ -95,7 +95,7 @@ And you can run your project using <code>$ python manage.py runserver</code> <br
 Now, you can goto http://127.0.0.1:5000/test and check if everything is ok :)
 
 ### => mana version
-Show the version info: latest version: 4.4
+Show the version info: latest version: 4.3
 
 
 ## Install mana

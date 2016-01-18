@@ -188,7 +188,6 @@ def blueprint(blueprint_name):
 ==> please try again !''' % dst_path)
         exit(1)
 
-    logger.info('''\033[33m{Info}\033[0m: create blueprint done!''')
     # create dst_path
     _mkdir_p(dst_path)
 
@@ -219,6 +218,8 @@ def blueprint(blueprint_name):
     os.chdir(templates_path)
     blueprint_templates_path = os.path.join(templates_path, blueprint_name)
     _mkdir_p(blueprint_templates_path)
+
+    logger.info('''\033[33m{Info}\033[0m: create blueprint done!''')
 
 
 @click.command()
@@ -300,14 +301,41 @@ def startproject(project_name):
 
 
 @click.command()
+@click.argument('module')
+def admin(module):
+    # add module into admin site
+    app = os.getcwd().split('/')[-1]
+    if app != 'app':
+        logger.warning('''\033[31m{Warning}\033[0m
+==> your current path is \033[32m%s\033[0m\n
+==> please add your sql module under app folder!''' % os.getcwd())
+        exit(1)
+
+    admin_path = os.path.join(os.getcwd(), 'admin')
+    os.chdir(admin_path)
+    with open('views.py', 'r+') as f:
+        prev = pos = 0
+        while f.readline():
+            prev, pos = pos, f.tell()
+        f.seek(prev)
+        f.write(
+            '\nfrom app.models import %s\nadmin.add_view(ModelView(%s, db.session))'
+            % (module, module)
+        )
+
+    logger.info('''\033[33m{Info}\033[0m: add module done!''')
+
+
+@click.command()
 def version():
     """mana version"""
-    click.echo("mana version: 4.3 \/ ")
+    click.echo("mana version: 4.4 \/ ")
 
 
 # mana command set
 cli.add_command(init)
 cli.add_command(blueprint)
 cli.add_command(startproject)
+cli.add_command(admin)
 cli.add_command(version)
 
