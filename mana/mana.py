@@ -52,17 +52,39 @@ logger.setLevel(DEBUG)
 logger.addHandler(StreamHandler())
 
 
+# logging info
 def warning_path_exist(path):
     """
     send warning msg if path exist
     """
+    logger.warning('''\033[31m{Warning}\033[0m
+    ==> \033[32m%s\033[0m\n exist
+    ==> please change the project name,
+    ==> and try again !''' % path)
+
+
+def start_init_info(path):
+    """
+    start init msg
+    """
     if os.path.isdir(path):
-        logger.warning("""[Warning]: %s exist
-        => please change the project name,
-        => and try again !
-        """ % path)
+        warning_path_exist(path)
+        exit(1)
+    else:
+        logger.info('''\033[33m{Info}\033[0m
+    ==> start init your flask project [on]
+    ==> \033[32m%s\033[0m\n''' % path)
 
 
+def init_done_info():
+    """
+    init done
+    """
+    logger.info('''\033[33m{Info}\033[0m
+    ==> init your flask project done !''')
+
+
+# create
 def create_templates_static_files(app_path):
     """
     create templates and static
@@ -116,18 +138,13 @@ def cli():
 def init(project_name):
     """
     mana init <project_name>
-    -- build a tiny flask project
-
     """
     # the destination path
     dst_path = os.path.join(os.getcwd(), project_name)
 
-    warning_path_exist(dst_path)
+    start_init_info(dst_path)
 
-    # start init
-    logger.info("[Info] start init your flask project!")
-
-    # create dst path
+     # create dst path
     _mkdir_p(dst_path)
 
     os.chdir(dst_path)
@@ -147,7 +164,7 @@ def init(project_name):
 
     create_templates_static_files(app_path)
 
-    logger.info("[Info] init flask project <%s> done! " % project_name)
+    init_done_info()
 
 
 @click.command()
@@ -156,10 +173,22 @@ def blueprint(blueprint_name):
     """
     mana blueprint <blueprint_name>
     """
+    app = os.getcwd().split('/')[-1]
+    if app != 'app':
+        logger.warning('''\033[31m{Warning}\033[0m
+==> your current path is \033[32m%s\033[0m\n
+==> please create your blueprint under app folder!''' % os.getcwd())
+        exit(1)
+
     # destination path
     dst_path = os.path.join(os.getcwd(), blueprint_name)
-    warning_path_exist(dst_path)
+    if os.path.isdir(dst_path):
+        logger.warning('''\033[31m{Warning}\033[0m
+==> bluprint \033[32m%s\033[0m\n exist
+==> please try again !''' % dst_path)
+        exit(1)
 
+    logger.info('''\033[33m{Info}\033[0m: create blueprint done!''')
     # create dst_path
     _mkdir_p(dst_path)
 
@@ -191,8 +220,6 @@ def blueprint(blueprint_name):
     blueprint_templates_path = os.path.join(templates_path, blueprint_name)
     _mkdir_p(blueprint_templates_path)
 
-    logger.info("[Info]init flask blueprint <%s> done! " % blueprint_name)
-
 
 @click.command()
 @click.argument('project_name')
@@ -202,10 +229,7 @@ def startproject(project_name):
     """
     # the destination path
     dst_path = os.path.join(os.getcwd(), project_name)
-    warning_path_exist(dst_path)
-
-    # start init
-    logger.info("[Info] start init your flask project!")
+    start_init_info(dst_path)
 
     # create dst path
     _mkdir_p(dst_path)
@@ -272,7 +296,7 @@ def startproject(project_name):
     init_code('index.html', _admin_index_html_code)
     init_code('logout.html', _admin_logout_html_code)
 
-    logger.info("[Info] init flask project <%s> done! " % project_name)
+    init_done_info()
 
 
 @click.command()
@@ -286,3 +310,4 @@ cli.add_command(init)
 cli.add_command(blueprint)
 cli.add_command(startproject)
 cli.add_command(version)
+

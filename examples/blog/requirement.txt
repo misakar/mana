@@ -1,0 +1,8 @@
+
+Flask==0.10.1
+Flask-Migrate
+Flask-Login
+Flask-Admin
+Flask-SQLAlchemy==1.0
+Flask-WTF==0.10.0
+
