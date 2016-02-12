@@ -131,8 +131,18 @@ Show the version info: latest version: 4.4
 
 + Flask-Admin
 
-## LICENSE
-MIT: check [LICENSE](https://github.com/neo1218/mana/blob/master/LICENSE) for more detail
+## UnitTest...
+
+> test, test, test
+
+    $ git clone https://github.com/neo1218/mana
+    $ cd mana
+    $ python test_mana.py
 
 ## Powered by Click
 click: https://github.com/mitsuhiko/click
+
+## LICENSE
+MIT: check [LICENSE](https://github.com/neo1218/mana/blob/master/LICENSE) for more detail
+
+
