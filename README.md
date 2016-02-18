@@ -145,4 +145,10 @@ click: https://github.com/mitsuhiko/click
 ## LICENSE
 MIT: check [LICENSE](https://github.com/neo1218/mana/blob/master/LICENSE) for more detail
 
+## Change Logs
+
++ ***20160217***
+    - 让help信息更有用
+
+
 

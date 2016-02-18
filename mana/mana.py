@@ -129,7 +129,38 @@ import click
 
 @click.group()
 def cli():
-    """the missing startproject command for Flask"""
+    """
+    the missing startproject command for Flask
+
+    \b
+    [commands]
+    mana version                    -> show the version info
+    mana init project_name          -> build a minimal flask project
+    mana blueprint blueprint_name   -> automatically create and register
+                                    a flask blueprint(run under app folder)
+    mana admin sql_module_name      -> add sqlalchemy modules into admin site
+    mana startproject project_name  -> build a SQL database driven project,
+                                    and provides a CRUD admin dashboard.
+
+    \b
+    [processes]
+    virtualenv venv && source venv/bin/activate  -> create a virtual environment (optional)
+    pip install -r requirement.txt               -> install flask extensions
+
+    \b
+    python manage.py db init
+    python manage.py db migrate
+    python manage.py db upgrade                  -> setup sql database(default database is sqlite)
+
+    \b
+    python manage.py shell                       -> create roles
+    >> Role.insert_roles()
+    >> quit()
+
+    \b
+    python manage.py admin                       -> create admin user
+    python manage.py runserver (-d)              -> run project(in debug mode)'''
+    """
     pass
 
 
@@ -137,7 +168,7 @@ def cli():
 @click.argument('project_name')
 def init(project_name):
     """
-    mana init <project_name>
+    build a minimal flask project
     """
     # the destination path
     dst_path = os.path.join(os.getcwd(), project_name)
@@ -171,7 +202,7 @@ def init(project_name):
 @click.argument('blueprint_name')
 def blueprint(blueprint_name):
     """
-    mana blueprint <blueprint_name>
+    create and register a blueprint
     """
     app = os.getcwd().split('/')[-1]
     if app != 'app':
@@ -226,7 +257,7 @@ def blueprint(blueprint_name):
 @click.argument('project_name')
 def startproject(project_name):
     """
-    mana startproject <project_name>
+    build a full status project
     """
     # the destination path
     dst_path = os.path.join(os.getcwd(), project_name)
@@ -303,6 +334,7 @@ def startproject(project_name):
 @click.command()
 @click.argument('module')
 def admin(module):
+    """add sql modules into admin site"""
     # add module into admin site
     app = os.getcwd().split('/')[-1]
     if app != 'app':
@@ -329,7 +361,7 @@ def admin(module):
 @click.command()
 def version():
     """mana version"""
-    click.echo("mana version: 4.4 \/ ")
+    click.echo("mana version: 4.5 \/ ")
 
 
 # mana command set
