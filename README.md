@@ -148,6 +148,7 @@ MIT: check [LICENSE](https://github.com/neo1218/mana/blob/master/LICENSE) for mo
 ## Change Logs
 
 + ***20160217***
+    + v4.5
     - 让help信息更有用
 
 
