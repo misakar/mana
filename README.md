@@ -70,7 +70,7 @@ Now, you can run myblog:
 
 And open http://127.0.0.1:5000/admin in the browser, you can see the
 DebugToolbar<br/>
-![admin login](http://7xj431.com1.z0.glb.clouddn.com/manalogin3)<br/>
+![admin login](http://7xj431.com1.z0.glb.clouddn.com/manalogin4)<br/>
 
 After log in as administrator, you can see the CRUD admin dashboard: <br/>
 ![admin site](http://7xj431.com1.z0.glb.clouddn.com/manaadmin22) <br/>
