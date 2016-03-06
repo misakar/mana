@@ -68,8 +68,9 @@ Now, you can run myblog:
 
     $ python manage.py runserver
 
-And open http://127.0.0.1:5000/admin in the browser<br/>
-![admin login](http://7xj431.com1.z0.glb.clouddn.com/manalogin2)<br/>
+And open http://127.0.0.1:5000/admin in the browser, you can see the
+DebugToolbar<br/>
+![admin login](http://7xj431.com1.z0.glb.clouddn.com/manalogin3)<br/>
 
 After log in as administrator, you can see the CRUD admin dashboard: <br/>
 ![admin site](http://7xj431.com1.z0.glb.clouddn.com/manaadmin22) <br/>
