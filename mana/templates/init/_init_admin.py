@@ -9,6 +9,7 @@ _init_admin_code = '''# coding: utf-8
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_debugtoolbar import DebugToolbarExtension
 from config import config
 
 
@@ -24,6 +25,7 @@ config
 config_name = 'default'
 app.config.from_object(config[config_name])
 config[config_name].init_app(app)
+toolbar = DevelopmentConfig(app)
 
 
 db = SQLAlchemy(app)
