@@ -25,7 +25,7 @@ config
 config_name = 'default'
 app.config.from_object(config[config_name])
 config[config_name].init_app(app)
-toolbar = DevelopmentConfig(app)
+toolbar = DebugToolbarExtension(app)
 
 
 db = SQLAlchemy(app)
