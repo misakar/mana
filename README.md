@@ -131,6 +131,10 @@ Show the version info: latest version: 4.4
 
 + Flask-Admin
 
+### debug
+
++ Flask-DebugToolbar
+
 ## UnitTest...
 
 > test, test, test
@@ -151,5 +155,9 @@ MIT: check [LICENSE](https://github.com/neo1218/mana/blob/master/LICENSE) for mo
     + v4.5
     - 让help信息更有用
 
++ ***20160306***
+    + v4.6
+    - 精简部分help信息
+    - 添加Flask-DebugToolbar
 
 
