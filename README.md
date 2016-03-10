@@ -96,7 +96,7 @@ And you can run your project using <code>$ python manage.py runserver</code> <br
 Now, you can goto http://127.0.0.1:5000/test and check if everything is ok :)
 
 ### => mana version
-Show the version info: latest version: 4.4
+Show the version info: latest version: 4.6
 
 
 ## Install mana
