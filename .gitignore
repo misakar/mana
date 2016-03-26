@@ -6,3 +6,4 @@ venv/
 mana.egg-info/
 dist/
 _build/
+test/

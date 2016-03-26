@@ -13,7 +13,7 @@ import mana
 
 
 # version
-version = 4.6
+version = 4.7
 
 
 # entry_points

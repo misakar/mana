@@ -41,5 +41,8 @@ admin = Admin(
 from app.models import User
 admin.add_view(ModelView(User, db.session))
 
+from app.models import Role
+admin.add_view(ModelView(Role, db.session))
+
 '''
 
