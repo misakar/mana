@@ -96,7 +96,7 @@ And you can run your project using <code>$ python manage.py runserver</code> <br
 Now, you can goto http://127.0.0.1:5000/test and check if everything is ok :)
 
 ### => mana version
-Show the version info: latest version: 4.7
+Show the version info: latest version: 4.8
 
 
 ## Install mana
@@ -165,3 +165,6 @@ MIT: check [LICENSE](https://github.com/neo1218/mana/blob/master/LICENSE) for mo
     + v4.7
     - 默认将Role数据加入admin site
 
++ ***20160327***
+    + v4.8
+    - haha:)

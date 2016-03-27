@@ -352,7 +352,7 @@ def admin(module):
 @click.command()
 def version():
     """mana version"""
-    click.echo("mana version: 4.7 \/ ")
+    click.echo("mana version: 4.8 \/ ")
 
 
 # mana command set

@@ -13,7 +13,7 @@ import mana
 
 
 # version
-version = 4.7
+version = 4.8
 
 
 # entry_points
@@ -51,3 +51,4 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules'
     ]
 )
+
