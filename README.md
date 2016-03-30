@@ -1,4 +1,4 @@
-![manalogo](http://7xj431.com1.z0.glb.clouddn.com/1459330965_869446.png) 🔮
+![manalogo](http://7xj431.com1.z0.glb.clouddn.com/1459330965_869446.png)
 ==
 <hr/>
 [![PyPI](https://img.shields.io/pypi/dm/mana.svg)](https://pypi.python.org/pypi/mana)
