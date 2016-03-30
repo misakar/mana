@@ -10,6 +10,9 @@ mana 🔮
 ## What is mana
 mana is just like Django startproject command, it helps you  build and manage your flask project swiftly with litte effort!
 
+## Mana Gif Demo
+![mana](http://7xj431.com1.z0.glb.clouddn.com/manamanamana.gif)
+
 ## mana command sets
 ### => mana startproject (project_name)
 **mana startproject** command is powerful, it can help you build a SQL database driven project, and provides a CRUD admin dashboard.
