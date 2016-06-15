@@ -25,7 +25,6 @@ Install:
 
 """
 
-import sys
 import os
 
 # operators
@@ -37,11 +36,14 @@ from templates.manage import _manage_basic_code, _manage_admin_code
 from templates.requirement import _requirement_code, _requirement_admin_code
 from templates.views import _views_basic_code, _views_blueprint_code
 from templates.forms import _forms_basic_code
-from templates.init import _init_basic_code, _init_blueprint_code, _init_admin_code
+from templates.init import _init_basic_code, _init_blueprint_code, \
+                           _init_admin_code
 from templates.config import _config_sql_code
-from templates.models import _models_code, _models_admin_code
-from templates.admin import _admin_views_code, _admin_index_html_code, _admin_logout_html_code
-from templates.auth import _auth_forms_code, _auth_views_code, _auth_login_html_code, _auth_login_css_code
+from templates.models import _models_admin_code
+from templates.admin import _admin_views_code, _admin_index_html_code, \
+                            _admin_logout_html_code
+from templates.auth import _auth_forms_code, _auth_views_code, \
+                           _auth_login_html_code, _auth_login_css_code
 
 # logging
 import logging
@@ -127,6 +129,7 @@ def create_blueprint(app_path, blueprint, views_code, forms_code, templates_path
 """use click:)"""
 import click
 
+
 @click.group()
 def cli():
     """
@@ -166,7 +169,7 @@ def init(project_name):
 
     start_init_info(dst_path)
 
-     # create dst path
+    # create dst path
     _mkdir_p(dst_path)
 
     os.chdir(dst_path)
@@ -216,8 +219,10 @@ def blueprint(blueprint_name):
     # change dir
     os.chdir(dst_path)
     # create files
-    init_code('__init__.py', _init_blueprint_code % (blueprint_name, blueprint_name))
-    init_code('views.py', _views_blueprint_code % (blueprint_name, blueprint_name))
+    init_code('__init__.py', _init_blueprint_code %
+        (blueprint_name, blueprint_name))
+    init_code('views.py', _views_blueprint_code %
+        (blueprint_name, blueprint_name))
     init_code('forms.py', _forms_basic_code)
 
     # register auth in app
@@ -352,7 +357,7 @@ def admin(module):
 @click.command()
 def version():
     """mana version"""
-    click.echo("mana version: 4.8 \/ ")
+    click.echo("mana version: 4.9 \/ ")
 
 
 # mana command set
@@ -361,4 +366,3 @@ cli.add_command(blueprint)
 cli.add_command(startproject)
 cli.add_command(admin)
 cli.add_command(version)
-
