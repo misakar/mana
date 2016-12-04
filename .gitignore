@@ -1,4 +1,3 @@
-*.pyc
 **/*.pyc
 **/*_build/
 venv/
