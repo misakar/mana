@@ -1,7 +1,6 @@
 *.pyc
 **/*.pyc
 **/*_build/
--1
 venv/
 mana.egg-info/
 dist/
