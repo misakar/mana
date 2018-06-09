@@ -49,7 +49,7 @@ from templates.auth import _auth_forms_code, _auth_views_code, \
 from templates.decorators import _rest_decorators_code
 from templates.handler import _rest_user_handler_code
 from templates.utils import _util_pagenation_code
-from templates.test import _rest_test_code
+from templates.tests import _rest_test_code
 
 # logging
 import logging
