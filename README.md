@@ -172,3 +172,7 @@ MIT: check [LICENSE](https://github.com/neo1218/mana/blob/master/LICENSE) for mo
 + ***20160327***
     + v4.8
     - haha:)
+
++ ***20180608***
+    + v4.9
+    - add `rest_startproject` and `rest_add_resource` command

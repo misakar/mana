@@ -7,3 +7,5 @@ dist/
 _build/
 test/
 examples/
+.vscode/
+.idea/
