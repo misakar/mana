@@ -102,6 +102,8 @@ Now, you can goto http://127.0.0.1:5000/test and check if everything is ok :)
 ### => mana version
 Show the version info: latest version: 4.9
 
+### => mana rest_startproject (project_name)
+quick start a flask restful project.
 
 ## Install mana
 #### 1. install by pip
@@ -172,3 +174,7 @@ MIT: check [LICENSE](https://github.com/neo1218/mana/blob/master/LICENSE) for mo
 + ***20160327***
     + v4.8
     - haha:)
+
++ ***20180608***
+    + v4.9
+    - add `rest_startproject` and `rest_add_resource` command

@@ -32,18 +32,24 @@ from operators import _mkdir_p
 from operators import init_code
 
 # templates
-from templates.manage import _manage_basic_code, _manage_admin_code
-from templates.requirement import _requirement_code, _requirement_admin_code
+from templates.manage import _manage_basic_code, _manage_admin_code,_manage_rest_code
+from templates.requirement import _requirement_code, _requirement_admin_code,_rest_requirement_code
 from templates.views import _views_basic_code, _views_blueprint_code
 from templates.forms import _forms_basic_code
 from templates.init import _init_basic_code, _init_blueprint_code, \
-                           _init_admin_code
+                           _init_admin_code, _rest_main_init_code, \
+                            _rest_init_blueprint_code,_rest_util_init_code
 from templates.config import _config_sql_code
-from templates.models import _models_admin_code
+from templates.models import _models_admin_code,_rest_models_code
 from templates.admin import _admin_views_code, _admin_index_html_code, \
                             _admin_logout_html_code
 from templates.auth import _auth_forms_code, _auth_views_code, \
-                           _auth_login_html_code, _auth_login_css_code
+                           _auth_login_html_code, _auth_login_css_code, \
+                            _rest_auth_code
+from templates.decorators import _rest_decorators_code
+from templates.handler import _rest_user_handler_code
+from templates.utils import _util_pagenation_code
+from templates.tests import _rest_test_code
 
 # logging
 import logging
@@ -360,9 +366,78 @@ def version():
     click.echo("mana version: 4.9 \/ ")
 
 
+@click.command()
+@click.argument('project_name')
+def rest_startproject(project_name):
+    """start a restful flask project"""
+    # the destination path
+    dst_path = os.path.join(os.getcwd(), project_name)
+
+    start_init_info(dst_path)
+
+    # create dst path
+    _mkdir_p(dst_path)
+
+    os.chdir(dst_path)
+
+    # create files under dst_path
+    init_code('manage.py', _manage_rest_code)
+    init_code('requirement.txt', _rest_requirement_code)
+    init_code('config.py',_config_sql_code)
+
+    # create app/ dic under dst_path
+    app_path = os.path.join(dst_path, 'app')
+    _mkdir_p(app_path)
+
+    os.chdir(app_path)
+    # create files under app path
+    init_code('models.py', _rest_models_code)
+    init_code('decorators.py', _rest_decorators_code)
+    init_code('__init__.py', _rest_main_init_code)
+
+    # create api/ dir under app_path
+    api_path = os.path.join(app_path, "api")
+    _mkdir_p(api_path)
+
+    os.chdir(api_path)
+    # create files under api_v1.0/ dir
+    init_code("auth.py", _rest_auth_code)
+    init_code('user.py', _rest_user_handler_code)
+    init_code('__init__.py', _rest_init_blueprint_code%("api","api"))
+
+
+    # create test dir under dst path
+    test_path=os.path.join(dst_path,'test')
+    _mkdir_p(test_path)
+
+    os.chdir(test_path)
+    # create files under test/ dir
+    init_code('__init__.py','''"the unittest package"''')
+    init_code('test.py',_rest_test_code)
+
+    # create utils/ dir under dst path
+    utils_path=os.path.join(dst_path,'utils')
+    _mkdir_p(utils_path)
+
+    os.chdir(utils_path)
+    # create files under utils/ dir
+    init_code('__init__.py',_rest_util_init_code)
+    init_code('pagenation.py',_util_pagenation_code)
+
+    init_done_info()
+
+
+
+
+
 # mana command set
 cli.add_command(init)
 cli.add_command(blueprint)
 cli.add_command(startproject)
 cli.add_command(admin)
 cli.add_command(version)
+cli.add_command(rest_startproject)
+
+
+if __name__ == '__main__':
+    cli()
